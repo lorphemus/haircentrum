@@ -1,32 +1,47 @@
+<?php 
+ob_start();
+session_start();
+include("admin/assets/connect.php");
+include("admin/assets/functions.php");
+?>
 <!DOCTYPE html>
 <html lang="tr">
 
 <head>
 	<!-- Start Meta -->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="description" content="Hair Centrum - Hair Transplant & Plastic Surgery"/>
-	<meta name="keywords" content="Creative, Digital, multipage, landing, freelancer template"/>
-	<meta name="author" content="ThemeRat">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title><?php echo select("seo_setup", "title_tr", 0); ?></title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
+    <meta name="subject" content="Hair Transplant & Beauty Center">
+    <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
+
+    <meta name="robots" content="index,follow">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+	<meta property="og:url" content="https://www.haircentrum.com">
+	<meta property="og:image" content="https://www.haircentrum.com/img/property.jpg"/>
+
 	<!-- Title of Site -->
 	<title>Hair Centrum - Hair Transplant & Plastic Surgery</title>
 	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<link rel="icon" type="image/png" href="<?php echo $base_link; ?>assets/img/favicon.png">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/bootstrap.min.css">
 	<!-- Font Awesome CSS -->
-	<link rel="stylesheet" href="assets/css/all.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/all.css">
 	<!-- Animate CSS -->
-	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/animate.css">
 	<!-- Swiper Bundle CSS -->
-	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/swiper-bundle.min.css">
 	<!-- Magnific Popup CSS -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/magnific-popup.css">
 	<!-- Mean Menu CSS -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/meanmenu.min.css">
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="assets/sass/style.css"> 
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/sass/style.css"> 
 </head>
 
 <body>
@@ -44,7 +59,7 @@
 	<!-- Header Area End -->
 
 	<!-- Banner Area Start -->
-	<div class="banner__area" data-background="assets/img/banner/banner-1.jpg">
+	<div class="banner__area" data-background="<?php echo $base_link; ?>assets/img/banner/banner-1.jpg">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-md-7 col-xl-8 order-change">
@@ -78,9 +93,9 @@
 				<div class="col-xl-3 col-md-6 xl-mb-30">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="assets/img/icon/services-1.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/services-1.png" alt="">
 							<div class="services__area-item-icon-one">
-								<img src="assets/img/icon/services-11.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/services-11.png" alt="">
 							</div>
 						</div>
 						<div class="services__area-item-content">
@@ -92,9 +107,9 @@
 				<div class="col-xl-3 col-md-6 md-mb-30">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="assets/img/icon/services-2.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/services-2.png" alt="">
 							<div class="services__area-item-icon-one">
-								<img src="assets/img/icon/services-22.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/services-22.png" alt="">
 							</div>
 						</div>
 						<div class="services__area-item-content">
@@ -106,9 +121,9 @@
 				<div class="col-xl-3 col-md-6 md-mb-30">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="assets/img/icon/services-3.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/services-3.png" alt="">
 							<div class="services__area-item-icon-one">
-								<img src="assets/img/icon/services-33.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/services-33.png" alt="">
 							</div>
 						</div>
 						<div class="services__area-item-content">
@@ -120,9 +135,9 @@
 				<div class="col-xl-3 col-md-6">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="assets/img/icon/services-4.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/services-4.png" alt="">
 							<div class="services__area-item-icon-one">
-								<img src="assets/img/icon/services-44.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/services-44.png" alt="">
 							</div>
 						</div>
 						<div class="services__area-item-content">
@@ -141,7 +156,7 @@
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-6 lg-mb-30">
 					<div class="about__area-left">
-						<img class="img__full" src="assets/img/about/about-1.jpg" alt="">
+						<img class="img__full" src="<?php echo $base_link; ?>assets/img/about/about-1.jpg" alt="">
                         <div class="about__area-left-play-icon video video-pulse">
 							<a class="video-popup" href="https://www.youtube.com/watch?v=2mlugW9L3zQ"><i class="fas fa-play"></i></a> 
 						</div>
@@ -190,25 +205,25 @@
 	</div>
 	<!-- Scroll Btn End -->
 	<!-- Main JS -->
-	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery-3.6.0.min.js"></script>
 	<!-- Bootstrap JS -->
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/bootstrap.min.js"></script>
 	<!-- Counter Up JS -->
-	<script src="assets/js/jquery.counterup.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.counterup.min.js"></script>
 	<!-- Popper JS -->
-	<script src="assets/js/popper.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/popper.min.js"></script>
 	<!-- Magnific Popup JS -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.magnific-popup.min.js"></script>
 	<!-- Swiper Bundle JS -->
-	<script src="assets/js/swiper-bundle.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/swiper-bundle.min.js"></script>
 	<!-- Waypoints JS -->
-	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.waypoints.min.js"></script>
 	<!-- Mean Menu JS -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.meanmenu.min.js"></script>
 	<!-- Isotope JS -->
-	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/isotope.pkgd.min.js"></script>
 	<!-- Custom JS -->
-	<script src="assets/js/custom.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/custom.js"></script>
 </body>
 
 </html>

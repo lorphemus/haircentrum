@@ -1,31 +1,46 @@
+<?php 
+ob_start();
+session_start();
+include("admin/assets/connect.php");
+include("admin/assets/functions.php");
+?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 	<!-- Start Meta -->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="description" content="Hair Centrum - Hair Transplant & Plastic Surgery"/>
-	<meta name="keywords" content="Creative, Digital, multipage, landing, freelancer template"/>
-	<meta name="author" content="ThemeRat">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title><?php echo select("seo_setup", "title_tr", 0); ?></title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
+    <meta name="subject" content="Hair Transplant & Plastic Surgery">
+    <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
+
+    <meta name="robots" content="index,follow">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+	<meta property="og:url" content="https://www.haircentrum.com">
+	<meta property="og:image" content="https://www.haircentrum.com/img/property.jpg"/>
+
 	<!-- Title of Site -->
 	<title>Hair Centrum - Hair Transplant & Plastic Surgery | Hakkımızda</title>
 	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<link rel="icon" type="image/png" href="<?php echo $base_link; ?>assets/img/favicon.png">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/bootstrap.min.css">
 	<!-- Font Awesome CSS -->
-	<link rel="stylesheet" href="assets/css/all.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/all.css">
 	<!-- Animate CSS -->
-	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/animate.css">
 	<!-- Swiper Bundle CSS -->
-	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/swiper-bundle.min.css">
 	<!-- Magnific Popup CSS -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/magnific-popup.css">
 	<!-- Mean Menu CSS -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/meanmenu.min.css">
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="assets/sass/style.css"> 
+	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/sass/style.css"> 
 </head>
 
 <body>
@@ -41,7 +56,7 @@
 	<?php include("assets/header.php"); ?>    
 	<!-- Header Area End -->		
 	<!-- Page Banner Area Start -->
-    <div class="page__banner" data-background="assets/img/banner/page-banner.jpg">
+    <div class="page__banner" data-background="<?php echo $base_link; ?>assets/img/banner/page-banner.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -49,7 +64,7 @@
                         <h1>Hakkımızda</h1>
                         <div class="page__banner-title-menu">
                             <ul>
-                                <li><a href="index.php">Anasayfa</a></li>
+                                <li><a href="<?php echo $base_link; ?>index.php">Anasayfa</a></li>
                                 <li><span> | </span>Hakkımızda</li>
                             </ul>
                         </div>
@@ -66,9 +81,9 @@
                 <div class="col-xl-7 col-lg-6 lg-mb-30">
                     <div class="mission__area-left">
 						<div class="mission__area-left-image">
-							<img src="assets/img/about/about-2.jpg" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/about/about-2.jpg" alt="">
 							<div class="mission__area-left-image-one">
-								<img src="assets/img/about/about-3.jpg" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/about/about-3.jpg" alt="">
 							</div>
 						</div>
 					</div>
@@ -87,7 +102,7 @@
     </div>
 	<!-- Mission Area End -->	
 	<!-- Appointment Area Start -->	
-	<div class="appointment__area" data-background="assets/img/property/resources.jpg">
+	<div class="appointment__area" data-background="<?php echo $base_link; ?>assets/img/property/resources.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
@@ -184,27 +199,25 @@
 	</div>
 	<!-- Scroll Btn End -->
 	<!-- Main JS -->
-	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery-3.6.0.min.js"></script>
 	<!-- Bootstrap JS -->
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/bootstrap.min.js"></script>
 	<!-- Counter Up JS -->
-	<script src="assets/js/jquery.counterup.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.counterup.min.js"></script>
 	<!-- Popper JS -->
-	<script src="assets/js/popper.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/popper.min.js"></script>
 	<!-- Magnific Popup JS -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.magnific-popup.min.js"></script>
 	<!-- Swiper Bundle JS -->
-	<script src="assets/js/swiper-bundle.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/swiper-bundle.min.js"></script>
 	<!-- Waypoints JS -->
-	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.waypoints.min.js"></script>
 	<!-- Mean Menu JS -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/jquery.meanmenu.min.js"></script>
 	<!-- Isotope JS -->
-	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/isotope.pkgd.min.js"></script>
 	<!-- Custom JS -->
-	<script src="assets/js/custom.js"></script>
+	<script src="<?php echo $base_link; ?>assets/js/custom.js"></script>
 </body>
 
-
-<!-- Mirrored from demo.themerat.com/tonaruy/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 08:55:01 GMT -->
 </html>

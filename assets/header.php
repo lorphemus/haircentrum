@@ -3,14 +3,14 @@
         <div class="header__area-menubar">
             <div class="header__area-menubar-left">
                 <div class="header__area-menubar-left-logo">
-                    <a href="index.php"><img src="assets/img/logo.png" alt=""></a>
+                    <a href="index.php"><img src="<?php echo $base_link; ?>assets/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="header__area-menubar-center">
                 <div class="header__area-menubar-center-menu menu-responsive">						
                     <ul id="mobilemenu">
-                        <li><a href="index.php">Anasayfa</a></li>
-                        <li><a href="about.php">Hakkımızda</a></li>
+                        <li><a href="<?php echo $base_link; ?>index.php">Anasayfa</a></li>
+                        <li><a href="<?php echo $base_link; ?>about.php">Hakkımızda</a></li>
                         <li class="menu-item-has-children"><a href="#">Hizmetlerimiz</a>
                             <ul class="sub-menu">
                                 <li><a href="#">Saç Ekimi</a></li>
@@ -19,7 +19,7 @@
                                 <li><a href="#">Obezite Cerrahisi</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">İletişim</a></li>
+                        <li><a href="<?php echo $base_link; ?>contact.php">İletişim</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,7 +30,16 @@
                             <span class="header__area-menubar-right-box-search-icon open"><i class="fal fa-globe"></i></span>
                         </div>
                         <div class="header__area-menubar-right-box-search-box">
-                            <div style="color: cornsilk; margin: auto;">Dil Seçenekleri</div>
+                            <div style="color: cornsilk;">
+                                <div class="row">
+                                    <div style="position:fixed; top:50%; left:50%; margin-top: -50px; margin-left: -100px;">
+                                        <ul>
+                                            <li style="list-style-type:none; border-bottom:1px solid ;">türkçe</li>
+                                            <li>ingilizce</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             <span class="header__area-menubar-right-box-search-box-icon"><i class="fal fa-times"></i></span>
                         </div>
                     </div>
