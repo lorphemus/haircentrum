@@ -5,11 +5,13 @@
                 <div class="footer__area-widget borders">
                     <h5>HAIR CENTRUM</h5>
                     <div class="footer__area-widget-about">
-                        <p>Proin libero velit, blandit a metus ac, interdum ultrices enim.</p>
+                        <p><?php echo select("seo_setup", "short_about_tr", 0); ?></p>
                         <div class="footer__area-widget-about-social">
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li <?php if(empty(select("social_media", "instagram", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "instagram", 0); ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li <?php if(empty(select("social_media", "facebook", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "facebook", 0); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li <?php if(empty(select("social_media", "twitter", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "twitter", 0); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li <?php if(empty(select("social_media", "youtube", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "youtube", 0); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -35,9 +37,9 @@
                     <h5>Bize Ulaşın</h5>
                     <div class="footer__area-widget-contact">
                         <ul>
-                            <li><a href="#">Abide-i Hürriyet Cad.NO:148 <br> İstanbul / Türkiye</a></li>
-                            <li><a href="#">info@haircentrum.com</a></li>
-                            <li><a href="#">+90 535 550 65 55</a></li>
+                            <li><a href="#"><?php echo select("contact_settings", "address", 0); ?></a></li>
+                            <li><a href="mailto:<?php echo select("contact_settings", "mail", 0); ?>"><?php echo select("contact_settings", "mail", 0); ?></a></li>
+                            <li><a href="tel:<?php echo select("contact_settings", "phone", 0); ?>"><?php echo select("contact_settings", "phone", 0); ?></a></li>
                         </ul>
                     </div>
                 </div>

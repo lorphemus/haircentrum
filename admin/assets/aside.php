@@ -22,8 +22,8 @@
         <li class="header">Sayfa Ayarları</li>
         <li class="treeview <?php if(@$treeview=="home"){echo 'active';} ?>"> <a href="#"> <i class="fa fa-home"></i> <span>Anasayfa Ayarları</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li <?php if(@$page=='slider'){ echo 'class="active"'; } ?>><a href="sliderlist.php"><i class="fa fa-image"></i> Slider Ayarları</a></li>
-            <li <?php if(@$page=='down-slider'){ echo 'class="active"'; } ?>><a href="slider-down.php"><i class="fa fa-newspaper-o"></i> Öne Çıkarılan Hizmetler</a></li>
+            <li <?php if(@$page=='slider'){ echo 'class="active"'; } ?>><a href="edit-banner.php"><i class="fa fa-image"></i> Banner Ayarları</a></li>
+            <li <?php if(@$page=='down-slider'){ echo 'class="active"'; } ?>><a href="banner-down.php"><i class="fa fa-newspaper-o"></i> Öne Çıkarılan Hizmetler</a></li>
             <li <?php if(@$page=='home-form'){ echo 'class="active"'; } ?>><a href="home-form-setup.php"><i class="fa fa-comment"></i> Anasayfa Form Yazıları</a></li>
           </ul>
         </li>

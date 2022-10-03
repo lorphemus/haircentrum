@@ -1,0 +1,28 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^localhost/haircentrum [NC]
+RewriteRule ^(.*)$ http://localhost/haircentrum/$1 [L,R=301,NC]
+
+RewriteCond %{HTTP:Accept-Language} ^en [NC]
+RewriteRule ^$ http://localhost/haircentrum/en/ [L,R=301]
+
+RewriteCond %{HTTP:Accept-Language} ^de [NC]
+RewriteRule ^$ http://localhost/haircentrum/ger/ [L,R=301]
+
+RewriteCond %{HTTP:Accept-Language} ^fr [NC]
+RewriteRule ^$ http://localhost/haircentrum/fr/ [L,R=301]
+
+RewriteCond %{HTTP:Accept-Language} ^ar [NC]
+RewriteRule ^$ http://localhost/haircentrum/ar/ [L,R=301]
+
+#Hizmetler Yönlendirme
+RewriteRule ^services/([0-9a-zA-Z-_]+)/([0-9]+)$ service.php?sef=$1&id=$2 [L,NC]
+RewriteRule ^en/services/([0-9a-zA-Z-_]+)/([0-9]+)$ en/service.php?sef=$1&id=$2 [L,NC]
+RewriteRule ^ger/services/([0-9a-zA-Z-_]+)/([0-9]+)$ ger/service.php?sef=$1&id=$2 [L,NC]
+RewriteRule ^fr/services/([0-9a-zA-Z-_]+)/([0-9]+)$ fr/service.php?sef=$1&id=$2 [L,NC]
+RewriteRule ^ar/services/([0-9a-zA-Z-_]+)/([0-9]+)$ ar/service.php?sef=$1&id=$2 [L,NC]
+
+#SEO URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php

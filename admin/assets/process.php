@@ -180,104 +180,9 @@ if(isset($_POST['infoupdate'])){
 		}
 }
 
-/* Add Slider */
-if(isset($_POST['add_slider'])){
-	
-	$allowed_ext=array("jpg","png","gif");
-	
-	$ext=strtolower(substr($_FILES['slider_pic']['name'],strpos($_FILES['slider_pic']['name'],'.')+1));
-	if(in_array($ext, $allowed_ext)===false){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
-		$_SESSION['icon'] = "error";
-		header('Location:../add-slider.php');
-		exit();
-	}
-	if($_FILES['slider_pic']['size']>2097152){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 2MB. üzerinde olmamalıdır.";
-		$_SESSION['icon'] = "error";
-		header('Location:../add-slider.php');
-		exit();
-	}else{
-		$uploads_dir='../../img/slider';
-		@$tmp_name=$_FILES['slider_pic']["tmp_name"];
-		@$name=$_FILES['slider_pic']["name"];
-		$name=preg_replace("/[^a-zA-Z0-9.]/", "", $name);
-		$benzersizsayi1=rand(20000,32000);
-		$benzersizsayi2=rand(20000,32000);
-		$benzersizad=$benzersizsayi1.$benzersizsayi2;
-		$refimgyol=substr($uploads_dir,6)."/".$benzersizad.$name;
-		@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
-
-		$add_image=$db->prepare("INSERT INTO slider SET
-		up_title_tr=:up_title_tr,
-		up_title_en=:up_title_en,
-		up_title_ger=:up_title_ger,
-		up_title_fr=:up_title_fr,
-		up_title_ar=:up_title_ar,
-		title_tr=:title_tr,
-		title_en=:title_en,
-		title_ger=:title_ger,
-		title_fr=:title_fr,
-		title_ar=:title_ar,
-		text_tr=:text_tr,
-		text_en=:text_en,
-		text_ger=:text_ger,
-		text_fr=:text_fr,
-		text_ar=:text_ar,
-		slider_link=:link,
-		pic_url=:pic");
-
-		$add_service=$add_image->execute(array(
-		"up_title_tr" => trim($_POST["up_title_tr"]),
-		"up_title_en" => trim($_POST["up_title_en"]),
-		"up_title_ger" => trim($_POST["up_title_ger"]),
-		"up_title_fr" => trim($_POST["up_title_fr"]),
-		"up_title_ar" => trim($_POST["up_title_ar"]),
-		"title_tr" => trim($_POST["title_tr"]),
-		"title_en" => trim($_POST["title_en"]),
-		"title_ger" => trim($_POST["title_ger"]),
-		"title_fr" => trim($_POST["title_fr"]),
-		"title_ar" => trim($_POST["title_ar"]),
-		"text_tr"  => trim($_POST["text_tr"]),
-		"text_en"  => trim($_POST["text_en"]),
-		"text_ger"  => trim($_POST["text_ger"]),
-		"text_fr"  => trim($_POST["text_fr"]),
-		"text_ar"  => trim($_POST["text_ar"]),
-		"link"  => trim($_POST["slider_link"]),
-		'pic'      => $refimgyol));
-
-		if($add_service){
-			$_SESSION['title'] = "İşlem Başarılı";
-			$_SESSION['status'] = "Slider başarılı bir şekilde eklenmiştir.";
-			$_SESSION['icon'] = "success";
-			header("Location:../sliderlist.php");
-		}else{
-			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Slider eklenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
-			$_SESSION['icon'] = "error";
-			header('Location:../sliderlist.php');
-		}
-	}
-}
-
-/* Slider Rank */
-if(isset($_POST["data"])){
-	parse_str($_POST["data"], $siralama);
-	$rank = $siralama["rank"];
-	foreach($rank as $key => $id){
-		
-		$query=$db->prepare("UPDATE slider SET slider_rank=:rank WHERE id=:id");
-		$update=$query->execute(array("rank" => $key, "id" => $id));
-	}
-}
-
-/* Slider Picture Update */
+/* Banner Picture Update */
 if(isset($_POST['update_slider_pic'])){
 	
-	$slider_id=$_POST['slider_id'];
-	
 	$allowed_ext=array("jpg","png","gif");
 	
 	$ext=strtolower(substr($_FILES['slider_pic']['name'],strpos($_FILES['slider_pic']['name'],'.')+1));
@@ -285,17 +190,17 @@ if(isset($_POST['update_slider_pic'])){
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
 		$_SESSION['icon'] = "error";
-		header("Location:../edit-slider.php?id=$slider_id");
+		header("Location:../edit-banner.php");
 		exit();
 	}
 	if($_FILES['slider_pic']['size']>2097152){
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 2MB. üzerinde olmamalıdır.";
 		$_SESSION['icon'] = "error";
-		header("Location:../edit-slider.php?id=$slider_id");
+		header("Location:../edit-banner.php");
 		exit();
 	}else{
-		$uploads_dir='../../img/slider';
+		$uploads_dir='../../assets/img/banner';
 		@$tmp_name=$_FILES['slider_pic']["tmp_name"];
 		@$name=$_FILES['slider_pic']["name"];
 		$name=preg_replace("/[^a-zA-Z0-9.]/", "", $name);
@@ -305,8 +210,8 @@ if(isset($_POST['update_slider_pic'])){
 		$refimgyol=substr($uploads_dir,6)."/".$benzersizad.$name;
 		@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
 
-		$edit_slider_pic=$db->prepare("UPDATE slider SET
-		pic_url=:pic WHERE id={$slider_id}");
+		$edit_slider_pic=$db->prepare("UPDATE banner_settings SET
+		pic_url=:pic WHERE id=0");
 
 		$updated=$edit_slider_pic->execute(array(
 		'pic'    => $refimgyol));
@@ -316,14 +221,14 @@ if(isset($_POST['update_slider_pic'])){
 		if($updated){
 			unlink("../../$unlink");
 			$_SESSION['title'] = "İşlem Başarılı";
-			$_SESSION['status'] = "Slider resmi başarılı bir şekilde güncellenmiştir.";
+			$_SESSION['status'] = "Banner resmi başarılı bir şekilde güncellenmiştir.";
 			$_SESSION['icon'] = "success";
-			header("Location:../edit-slider.php?id=$slider_id");
+			header("Location:../edit-banner.php");
 		}else{
 			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Slider resmi güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+			$_SESSION['status'] = "Banner resmi güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 			$_SESSION['icon'] = "error";
-			header("Location:../edit-slider.php?id=$slider_id");
+			header("Location:../edit-banner.php");
 		}
 	}
 }
@@ -331,14 +236,39 @@ if(isset($_POST['update_slider_pic'])){
 /* Slider Content Update */
 if(isset($_POST['edit_slider'])){
 	
-	$slider_id=$_POST['slider_id'];
+	$edit_slider=$db->prepare("UPDATE banner_settings SET
+	title_tr=:title_tr,
+	title_en=:title_en,
+	title_ger=:title_ger,
+	title_fr=:title_fr,
+	title_ar=:title_ar
+	WHERE id=0");
+
+	$updated=$edit_slider->execute(array(
+	"title_tr"  => trim($_POST["title_tr"]),
+	"title_en"  => trim($_POST["title_en"]),
+	"title_ger"  => trim($_POST["title_ger"]),
+	"title_fr"  => trim($_POST["title_fr"]),
+	"title_ar"  => trim($_POST["title_ar"])
+	));
+
+	if($updated){
+		$_SESSION['title'] = "İşlem Başarılı";
+		$_SESSION['status'] = "Banner başarılı bir şekilde güncellenmiştir.";
+		$_SESSION['icon'] = "success";
+		header("Location:../edit-banner.php");
+	}else{
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "Banner güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+		$_SESSION['icon'] = "error";
+		header("Location:../edit-banner.php");
+	}
+}
+
+/* Slider Down Box1 */
+if(isset($_POST['card_update1'])){
 	
-	$edit_slider=$db->prepare("UPDATE slider SET
-	up_title_tr=:up_title_tr,
-	up_title_en=:up_title_en,
-	up_title_ger=:up_title_ger,
-	up_title_fr=:up_title_fr,
-	up_title_ar=:up_title_ar,
+	$edit_card=$db->prepare("UPDATE banner_down SET
 	title_tr=:title_tr,
 	title_en=:title_en,
 	title_ger=:title_ger,
@@ -349,60 +279,6 @@ if(isset($_POST['edit_slider'])){
 	text_ger=:text_ger,
 	text_fr=:text_fr,
 	text_ar=:text_ar,
-	slider_link=:link
-	WHERE id={$slider_id}");
-
-	$updated=$edit_slider->execute(array(
-	"up_title_tr"  => trim($_POST["up_title_tr"]),
-	"up_title_en"  => trim($_POST["up_title_en"]),
-	"up_title_ger"  => trim($_POST["up_title_ger"]),
-	"up_title_fr"  => trim($_POST["up_title_fr"]),
-	"up_title_ar"  => trim($_POST["up_title_ar"]),
-	"title_tr"  => trim($_POST["title_tr"]),
-	"title_en"  => trim($_POST["title_en"]),
-	"title_ger"  => trim($_POST["title_ger"]),
-	"title_fr"  => trim($_POST["title_fr"]),
-	"title_ar"  => trim($_POST["title_ar"]),
-	"text_tr"   => trim($_POST["text_tr"]),
-	"text_en"   => trim($_POST["text_en"]),
-	"text_ger"   => trim($_POST["text_ger"]),
-	"text_fr"   => trim($_POST["text_fr"]),
-	"text_ar"   => trim($_POST["text_ar"]),
-	"link"		=> trim($_POST["slider_link"])
-	));
-
-	if($updated){
-		$_SESSION['title'] = "İşlem Başarılı";
-		$_SESSION['status'] = "Slider başarılı bir şekilde güncellenmiştir.";
-		$_SESSION['icon'] = "success";
-		header("Location:../edit-slider.php?id=$slider_id");
-	}else{
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Slider güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
-		$_SESSION['icon'] = "error";
-		header("Location:../edit-slider.php?id=$slider_id");
-	}
-}
-
-/* Delete Slider */
-if(isset($_POST["delete_slider"])){
-	$delete_qry=$db->prepare("DELETE FROM slider WHERE id=:id");
-	$delete_slider=$delete_qry->execute(array('id'=>$_POST['delete_id']));
-	if($delete_slider){
-		$unlink=$_POST["unlink"];
-		unlink("../../$unlink");
-	}
-}
-
-/* Slider Down Box1 */
-if(isset($_POST['card_update1'])){
-	
-	$edit_card=$db->prepare("UPDATE slider_down SET
-	title_tr=:title_tr,
-	title_en=:title_en,
-	title_ger=:title_ger,
-	title_fr=:title_fr,
-	title_ar=:title_ar,
 	icon=:icon,
 	box_link=:box_link
 	WHERE id=1");
@@ -413,6 +289,11 @@ if(isset($_POST['card_update1'])){
 	"title_ger" => trim($_POST["title_ger"]),
 	"title_fr"  => trim($_POST["title_fr"]),
 	"title_ar"  => trim($_POST["title_ar"]),
+	"text_tr"  => trim($_POST["text_tr"]),
+	"text_en"  => trim($_POST["text_en"]),
+	"text_ger" => trim($_POST["text_ger"]),
+	"text_fr"  => trim($_POST["text_fr"]),
+	"text_ar"  => trim($_POST["text_ar"]),
 	"icon"  	=> trim($_POST["icon"]),
 	"box_link"  => trim($_POST["box_link"])
 	));
@@ -421,24 +302,29 @@ if(isset($_POST['card_update1'])){
 		$_SESSION['title'] = "İşlem Başarılı";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet başarılı bir şekilde güncellendi.";
 		$_SESSION['icon'] = "success";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}else{
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 		$_SESSION['icon'] = "error";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}
 }
 
 /* Slider Down Box2 */
 if(isset($_POST['card_update2'])){
 	
-	$edit_card=$db->prepare("UPDATE slider_down SET
+	$edit_card=$db->prepare("UPDATE banner_down SET
 	title_tr=:title_tr,
 	title_en=:title_en,
 	title_ger=:title_ger,
 	title_fr=:title_fr,
 	title_ar=:title_ar,
+	text_tr=:text_tr,
+	text_en=:text_en,
+	text_ger=:text_ger,
+	text_fr=:text_fr,
+	text_ar=:text_ar,
 	icon=:icon,
 	box_link=:box_link
 	WHERE id=2");
@@ -449,6 +335,11 @@ if(isset($_POST['card_update2'])){
 	"title_ger" => trim($_POST["title_ger"]),
 	"title_fr"  => trim($_POST["title_fr"]),
 	"title_ar"  => trim($_POST["title_ar"]),
+	"text_tr"  => trim($_POST["text_tr"]),
+	"text_en"  => trim($_POST["text_en"]),
+	"text_ger" => trim($_POST["text_ger"]),
+	"text_fr"  => trim($_POST["text_fr"]),
+	"text_ar"  => trim($_POST["text_ar"]),
 	"icon"  	=> trim($_POST["icon"]),
 	"box_link"  => trim($_POST["box_link"])
 	));
@@ -457,24 +348,29 @@ if(isset($_POST['card_update2'])){
 		$_SESSION['title'] = "İşlem Başarılı";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet başarılı bir şekilde güncellendi.";
 		$_SESSION['icon'] = "success";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}else{
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 		$_SESSION['icon'] = "error";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}
 }
 
 /* Slider Down Box 3 */
 if(isset($_POST['card_update3'])){
 	
-	$edit_card=$db->prepare("UPDATE slider_down SET
+	$edit_card=$db->prepare("UPDATE banner_down SET
 	title_tr=:title_tr,
 	title_en=:title_en,
 	title_ger=:title_ger,
 	title_fr=:title_fr,
 	title_ar=:title_ar,
+	text_tr=:text_tr,
+	text_en=:text_en,
+	text_ger=:text_ger,
+	text_fr=:text_fr,
+	text_ar=:text_ar,
 	icon=:icon,
 	box_link=:box_link
 	WHERE id=3");
@@ -485,6 +381,11 @@ if(isset($_POST['card_update3'])){
 	"title_ger" => trim($_POST["title_ger"]),
 	"title_fr"  => trim($_POST["title_fr"]),
 	"title_ar"  => trim($_POST["title_ar"]),
+	"text_tr"  => trim($_POST["text_tr"]),
+	"text_en"  => trim($_POST["text_en"]),
+	"text_ger" => trim($_POST["text_ger"]),
+	"text_fr"  => trim($_POST["text_fr"]),
+	"text_ar"  => trim($_POST["text_ar"]),
 	"icon"  	=> trim($_POST["icon"]),
 	"box_link"  => trim($_POST["box_link"])
 	));
@@ -493,24 +394,29 @@ if(isset($_POST['card_update3'])){
 		$_SESSION['title'] = "İşlem Başarılı";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet başarılı bir şekilde güncellendi.";
 		$_SESSION['icon'] = "success";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}else{
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 		$_SESSION['icon'] = "error";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}
 }
 
 /* Slider Down Box 4 */
 if(isset($_POST['card_update4'])){
 	
-	$edit_card=$db->prepare("UPDATE slider_down SET
+	$edit_card=$db->prepare("UPDATE banner_down SET
 	title_tr=:title_tr,
 	title_en=:title_en,
 	title_ger=:title_ger,
 	title_fr=:title_fr,
 	title_ar=:title_ar,
+	text_tr=:text_tr,
+	text_en=:text_en,
+	text_ger=:text_ger,
+	text_fr=:text_fr,
+	text_ar=:text_ar,
 	icon=:icon,
 	box_link=:box_link
 	WHERE id=4");
@@ -521,6 +427,11 @@ if(isset($_POST['card_update4'])){
 	"title_ger" => trim($_POST["title_ger"]),
 	"title_fr"  => trim($_POST["title_fr"]),
 	"title_ar"  => trim($_POST["title_ar"]),
+	"text_tr"  => trim($_POST["text_tr"]),
+	"text_en"  => trim($_POST["text_en"]),
+	"text_ger" => trim($_POST["text_ger"]),
+	"text_fr"  => trim($_POST["text_fr"]),
+	"text_ar"  => trim($_POST["text_ar"]),
 	"icon"  	=> trim($_POST["icon"]),
 	"box_link"  => trim($_POST["box_link"])
 	));
@@ -529,12 +440,12 @@ if(isset($_POST['card_update4'])){
 		$_SESSION['title'] = "İşlem Başarılı";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet başarılı bir şekilde güncellendi.";
 		$_SESSION['icon'] = "success";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}else{
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Öne Çıkarılan Hizmet güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 		$_SESSION['icon'] = "error";
-		header("Location:../slider-down.php");
+		header("Location:../banner-down.php");
 	}
 }
 
@@ -706,205 +617,42 @@ if(isset($_POST["about_text_update"])){
 
 /* Add Service */
 if(isset($_POST['add_service'])){
-	$allowed_ext=array("jpg","png","gif");
-	$ext=strtolower(substr($_FILES['service_pic']['name'],strpos($_FILES['service_pic']['name'],'.')+1));
-	if(in_array($ext, $allowed_ext)===false){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
-		$_SESSION['icon'] = "error";
-		header('Location:../add-service.php');
-		exit();
-	}
-	if($_FILES['service_pic']['size']>1048576){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 1MB. üzerinde olmamalıdır.";
-		$_SESSION['icon'] = "error";
-		header('Location:../add-service.php');
-		exit();
+	$prepare=$db->prepare("INSERT INTO services SET
+	service_title_tr=:title_tr,
+	service_title_en=:title_en,
+	service_title_ger=:title_ger,
+	service_title_fr=:title_fr,
+	service_title_ar=:title_ar,
+	service_text_tr=:text_tr,
+	service_text_en=:text_en,
+	service_text_ger=:text_ger,
+	service_text_fr=:text_fr,
+	service_text_ar=:text_ar");
+
+	$add_service=$prepare->execute(array(
+	"title_tr"  => htmlspecialchars(trim($_POST["service_title_tr"])),
+	"title_en"  => htmlspecialchars(trim($_POST["service_title_en"])),
+	"title_ger" => htmlspecialchars(trim($_POST["service_title_ger"])),
+	"title_fr" => htmlspecialchars(trim($_POST["service_title_fr"])),
+	"title_ar"  => htmlspecialchars(trim($_POST["service_title_ar"])),
+	"text_tr"   => $_POST["service_text_tr"],
+	"text_en"   => $_POST["service_text_en"],
+	"text_ger"  => $_POST["service_text_ger"],
+	"text_fr"  => $_POST["service_text_fr"],
+	"text_ar"   => $_POST["service_text_ar"]));
+
+	if($add_service){
+		$_SESSION['title'] = "İşlem Başarılı";
+		$_SESSION['status'] = "Hizmet başarılı bir şekilde eklenmiştir.";
+		$_SESSION['icon'] = "success";
+		header("Location:../serviceslist.php");
 	}else{
-		$uploads_dir='../../img/services';
-		@$tmp_name=$_FILES['service_pic']["tmp_name"];
-		@$name=$_FILES['service_pic']["name"];
-		$benzersizsayi1=rand(20000,32000);
-		$benzersizsayi2=rand(20000,32000);
-		$benzersizad=$benzersizsayi1.$benzersizsayi2;
-		$refimgyol=substr($uploads_dir,6)."/".$benzersizad.$name;
-		@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
-
-		/* Pic URL HOME */
-		$allowed_ext=array("jpg","png","gif");
-		$ext=strtolower(substr($_FILES['service_pic_home']['name'],strpos($_FILES['service_pic_home']['name'],'.')+1));
-		if(in_array($ext, $allowed_ext)===false){
-			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
-			$_SESSION['icon'] = "error";
-			header('Location:../add-service.php');
-			exit();
-		}
-		if($_FILES['service_pic_home']['size']>1048576){
-			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 1MB. üzerinde olmamalıdır.";
-			$_SESSION['icon'] = "error";
-			header('Location:../add-service.php');
-			exit();
-		}else{
-			$uploads_dir='../../img/services';
-			@$tmp_name=$_FILES['service_pic_home']["tmp_name"];
-			@$name=$_FILES['service_pic_home']["name"];
-			$benzersizsayi1=rand(20000,32000);
-			$benzersizsayi2=rand(20000,32000);
-			$benzersizad=$benzersizsayi1.$benzersizsayi2;
-			$refimgyolhome=substr($uploads_dir,6)."/".$benzersizad.$name;
-			@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
-
-		$add_image=$db->prepare("INSERT INTO services SET
-		service_title_tr=:title_tr,
-		service_title_en=:title_en,
-		service_title_ger=:title_ger,
-		service_title_fr=:title_fr,
-		service_title_ar=:title_ar,
-		service_text_tr=:text_tr,
-		service_text_en=:text_en,
-		service_text_ger=:text_ger,
-		service_text_fr=:text_fr,
-		service_text_ar=:text_ar,
-		pic_url_home=:pic_home,
-		pic_url=:pic");
-
-		$add_service=$add_image->execute(array(
-		"title_tr"  => htmlspecialchars(trim($_POST["service_title_tr"])),
-		"title_en"  => htmlspecialchars(trim($_POST["service_title_en"])),
-		"title_ger" => htmlspecialchars(trim($_POST["service_title_ger"])),
-		"title_fr" => htmlspecialchars(trim($_POST["service_title_fr"])),
-		"title_ar"  => htmlspecialchars(trim($_POST["service_title_ar"])),
-		"text_tr"   => $_POST["service_text_tr"],
-		"text_en"   => $_POST["service_text_en"],
-		"text_ger"  => $_POST["service_text_ger"],
-		"text_fr"  => $_POST["service_text_fr"],
-		"text_ar"   => $_POST["service_text_ar"],
-		"pic_home"  => $refimgyolhome,
-		"pic"    	=> $refimgyol));
-
-		if($add_service){
-			$_SESSION['title'] = "İşlem Başarılı";
-			$_SESSION['status'] = "Hizmet başarılı bir şekilde eklenmiştir.";
-			$_SESSION['icon'] = "success";
-			header("Location:../serviceslist.php");
-		}else{
-			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Hizmet eklenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
-			$_SESSION['icon'] = "error";
-			header('Location:../serviceslist.php');
-		}
-	  }
-	}
-}
-
-/* Service Home Picture Update */
-if(isset($_POST['update_service_home_pic'])){
-	
-	$service_id=$_POST['service_id'];
-	
-	$allowed_ext=array("jpg","png","gif");
-	$ext=strtolower(substr($_FILES['service_home_pic']['name'],strpos($_FILES['service_home_pic']['name'],'.')+1));
-	if(in_array($ext, $allowed_ext)===false){
 		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
+		$_SESSION['status'] = "Hizmet eklenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 		$_SESSION['icon'] = "error";
-		header("Location:../edit-service.php?id=$service_id");
-		exit();
+		header('Location:../serviceslist.php');
 	}
-	if($_FILES['service_home_pic']['size']>1048576){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 1MB. üzerinde olmamalıdır.";
-		$_SESSION['icon'] = "error";
-		header("Location:../edit-service.php?id=$service_id");
-		exit();
-	}else{
-		$uploads_dir='../../img/services';
-		@$tmp_name=$_FILES['service_home_pic']["tmp_name"];
-		@$name=$_FILES['service_home_pic']["name"];
-		$benzersizsayi1=rand(20000,32000);
-		$benzersizsayi2=rand(20000,32000);
-		$benzersizad=$benzersizsayi1.$benzersizsayi2;
-		$refimgyol=substr($uploads_dir,6)."/".$benzersizad.$name;
-		@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
-
-		$edit_service_pic=$db->prepare("UPDATE services SET
-		pic_url_home=:pic WHERE id={$service_id}");
-
-		$updated=$edit_service_pic->execute(array(
-		'pic'    => $refimgyol));
-		
-		$unlink=$_POST["service_home_pic"];
-
-		if($updated){
-			unlink("../../$unlink");
-			$_SESSION['title'] = "İşlem Başarılı";
-			$_SESSION['status'] = "Hizmet kapak resmi başarılı bir şekilde güncellenmiştir.";
-			$_SESSION['icon'] = "success";
-			header("Location:../edit-service.php?id=$service_id");
-		}else{
-			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Hizmet kapak resmi güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
-			$_SESSION['icon'] = "error";
-			header("Location:../edit-service.php?id=$service_id");
-		}
-	}
-}
-
-/* Service Picture Update */
-if(isset($_POST['update_service_pic'])){
-	
-	$service_id=$_POST['service_id'];
-	
-	$allowed_ext=array("jpg","png","gif");
-	$ext=strtolower(substr($_FILES['service_pic']['name'],strpos($_FILES['service_pic']['name'],'.')+1));
-	if(in_array($ext, $allowed_ext)===false){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
-		$_SESSION['icon'] = "error";
-		header("Location:../edit-service.php?id=$service_id");
-		exit();
-	}
-	if($_FILES['service_pic']['size']>1048576){
-		$_SESSION['title'] = "Hata!";
-		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 1MB. üzerinde olmamalıdır.";
-		$_SESSION['icon'] = "error";
-		header("Location:../edit-service.php?id=$service_id");
-		exit();
-	}else{
-		$uploads_dir='../../img/services';
-		@$tmp_name=$_FILES['service_pic']["tmp_name"];
-		@$name=$_FILES['service_pic']["name"];
-		$benzersizsayi1=rand(20000,32000);
-		$benzersizsayi2=rand(20000,32000);
-		$benzersizad=$benzersizsayi1.$benzersizsayi2;
-		$refimgyol=substr($uploads_dir,6)."/".$benzersizad.$name;
-		@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
-
-		$edit_service_pic=$db->prepare("UPDATE services SET
-		pic_url=:pic WHERE id={$service_id}");
-
-		$updated=$edit_service_pic->execute(array(
-		'pic'    => $refimgyol));
-		
-		$unlink=$_POST["service_pic"];
-
-		if($updated){
-			unlink("../../$unlink");
-			$_SESSION['title'] = "İşlem Başarılı";
-			$_SESSION['status'] = "Hizmet kapak resmi başarılı bir şekilde güncellenmiştir.";
-			$_SESSION['icon'] = "success";
-			header("Location:../edit-service.php?id=$service_id");
-		}else{
-			$_SESSION['title'] = "Hata!";
-			$_SESSION['status'] = "Hizmet kapak resmi güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
-			$_SESSION['icon'] = "error";
-			header("Location:../edit-service.php?id=$service_id");
-		}
-	}
-}
+ }
 
 /* Service Update */
 if(isset($_POST['edit_service'])){
@@ -1470,8 +1218,6 @@ if(isset($_POST["contact_update"])){
 		phone=:phone,
 		whatsapp=:whatsapp,
 		mail=:mail,
-		monfri=:monfri,
-		satsun=:satsun,
 		address=:address,
 		google_map=:google_map WHERE id=0");
 	
@@ -1479,8 +1225,6 @@ if(isset($_POST["contact_update"])){
 		'phone' 	 => htmlspecialchars(trim($_POST['phone'])),
 		'whatsapp'   => htmlspecialchars(trim($_POST['whatsapp'])),
 		'mail'  	 => htmlspecialchars(trim($_POST['mail'])),
-		'monfri'  	 => htmlspecialchars(trim($_POST['monfri'])),
-		'satsun'  	 => htmlspecialchars(trim($_POST['satsun'])),
 		'address'  	 => htmlspecialchars(trim($_POST['address'])),
 		'google_map' => $_POST["google_map"]
 	));

@@ -59,12 +59,12 @@ include("admin/assets/functions.php");
 	<!-- Header Area End -->
 
 	<!-- Banner Area Start -->
-	<div class="banner__area" data-background="<?php echo $base_link; ?>assets/img/banner/banner-1.jpg">
+	<div class="banner__area" data-background="<?php echo $base_link.select("banner_settings", "pic_url", 0); ?>">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-md-7 col-xl-8 order-change">
 					<div class="banner__area-left">
-						<h1>Slogan Başlık</h1>
+						<h1><?php echo select("banner_settings", "title_tr", 0); ?></h1>
 						<a href="#" class="theme-btn">Hakkımızda</a>
 					</div>
 				</div>
@@ -72,8 +72,10 @@ include("admin/assets/functions.php");
 		</div>
 		<div class="banner__area-social">
 			<ul>
-				<li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
-				<li><a href="https://www.instagram.com/" target="_blank">Tnstagram</a></li>
+				<li <?php if(empty(select("social_media", "youtube", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "youtube", 0); ?>" target="_blank">Youtube</a></li>
+				<li <?php if(empty(select("social_media", "twitter", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "twitter", 0); ?>" target="_blank">Twitter</a></li>
+				<li <?php if(empty(select("social_media", "facebook", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "facebook", 0); ?>" target="_blank">Facebook</a></li>
+				<li <?php if(empty(select("social_media", "instagram", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "instagram", 0); ?>" target="_blank">Instagram</a></li>
 			</ul>
 		</div>
 	</div>
@@ -90,59 +92,95 @@ include("admin/assets/functions.php");
 				</div>
 			</div>
 			<div class="row">
+				<?php
+                $query=$db->prepare("SELECT * FROM banner_down WHERE id=?");
+                $query->execute(array(1));
+                $box=$query->fetch(PDO::FETCH_ASSOC);
+
+                $query=$db->prepare("SELECT * FROM services WHERE id=:id");
+                $query->execute(array('id'=>$box["box_link"]));
+                $service_link=$query->fetch(PDO::FETCH_ASSOC);
+                ?>
 				<div class="col-xl-3 col-md-6 xl-mb-30">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="<?php echo $base_link; ?>assets/img/icon/services-1.png" alt="">
+						<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>-1.png">
 							<div class="services__area-item-icon-one">
-								<img src="<?php echo $base_link; ?>assets/img/icon/services-11.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>.png">
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="#">Saç Ekimi</a></h4>
-							<p>Proin libero velit, blandit a metus  interdum ultrices enim</p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
+							<p><?php echo $box["text_tr"];  ?></p>
 						</div>
 					</div>
 				</div>
+				<?php
+                $query=$db->prepare("SELECT * FROM banner_down WHERE id=?");
+                $query->execute(array(2));
+                $box=$query->fetch(PDO::FETCH_ASSOC);
+
+                $query=$db->prepare("SELECT * FROM services WHERE id=:id");
+                $query->execute(array('id'=>$box["box_link"]));
+                $service_link=$query->fetch(PDO::FETCH_ASSOC);
+                ?>
 				<div class="col-xl-3 col-md-6 md-mb-30">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="<?php echo $base_link; ?>assets/img/icon/services-2.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>-1.png">
 							<div class="services__area-item-icon-one">
-								<img src="<?php echo $base_link; ?>assets/img/icon/services-22.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>.png">
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="#">Estetik</a></h4>
-							<p>Proin libero velit, blandit a metus  interdum ultrices enim</p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
+							<p><?php echo $box["text_tr"];  ?></p>
 						</div>
 					</div>
 				</div>
+				<?php
+                $query=$db->prepare("SELECT * FROM banner_down WHERE id=?");
+                $query->execute(array(3));
+                $box=$query->fetch(PDO::FETCH_ASSOC);
+
+                $query=$db->prepare("SELECT * FROM services WHERE id=:id");
+                $query->execute(array('id'=>$box["box_link"]));
+                $service_link=$query->fetch(PDO::FETCH_ASSOC);
+                ?>
 				<div class="col-xl-3 col-md-6 md-mb-30">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="<?php echo $base_link; ?>assets/img/icon/services-3.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>-1.png">
 							<div class="services__area-item-icon-one">
-								<img src="<?php echo $base_link; ?>assets/img/icon/services-33.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>.png">
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="#">Diş Estetiği</a></h4>
-							<p>Proin libero velit, blandit a metus  interdum ultrices enim</p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
+							<p><?php echo $box["text_tr"];  ?></p>
 						</div>
 					</div>
 				</div>
+				<?php
+                $query=$db->prepare("SELECT * FROM banner_down WHERE id=?");
+                $query->execute(array(4));
+                $box=$query->fetch(PDO::FETCH_ASSOC);
+
+                $query=$db->prepare("SELECT * FROM services WHERE id=:id");
+                $query->execute(array('id'=>$box["box_link"]));
+                $service_link=$query->fetch(PDO::FETCH_ASSOC);
+                ?>
 				<div class="col-xl-3 col-md-6">
 					<div class="services__area-item">
 						<div class="services__area-item-icon">
-							<img src="<?php echo $base_link; ?>assets/img/icon/services-4.png" alt="">
+							<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>-1.png">
 							<div class="services__area-item-icon-one">
-								<img src="<?php echo $base_link; ?>assets/img/icon/services-44.png" alt="">
+								<img src="<?php echo $base_link; ?>assets/img/icon/<?php echo $box["icon"];  ?>.png">
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="#">Obezite Cerrahisi</a></h4>
-							<p>Proin libero velit, blandit a metus  interdum ultrices enim</p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
+							<p><?php echo $box["text_tr"];  ?></p>
 						</div>
 					</div>
 				</div>
