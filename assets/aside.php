@@ -15,14 +15,14 @@
                 </ul>
             </div>
         </div>
-        <div class="all__sidebar-item-help mt-30" data-background="assets/img/avatar/avatar-8.jpg">
-            <h3>Need Any Help?</h3>
+        <div class="all__sidebar-item-help mt-30" data-background="<?php echo $base_link; ?>assets/img/about/about-3.jpg">
+            <h3>Uzman Ekibimiz</h3>
             <div class="all__sidebar-item-help-contact">
                 <div class="all__sidebar-item-help-contact-icon">
                     <i class="fal fa-phone-alt"></i>
                 </div>
                 <div class="all__sidebar-item-help-contact-content">
-                    <span>Quick Help</span>
+                    <span>Bizi Hemen Arayın</span>
                     <h4><a href="tel:<?php echo select("contact_settings", "phone", 0); ?>"><?php echo select("contact_settings", "phone", 0); ?></a></h4>
                 </div>
             </div>

@@ -203,19 +203,3 @@
 	});
 	
 })(jQuery);
-
-function showmenu() {
-	$("#selector .dropdown-content").show();
-  }
-  
-  $(function() {
-	var $win = $(window),
-	  $box = $("#selector button"),
-	  $menu = $("#selector .dropdown-content");
-  
-	$win.on("click", function(event) {
-	  if (!$box.is(event.target)) {
-		$menu.hide();
-	  }
-	});
-  });

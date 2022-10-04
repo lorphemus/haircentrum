@@ -24,8 +24,6 @@ include("admin/assets/functions.php");
 	<meta property="og:url" content="https://www.haircentrum.com">
 	<meta property="og:image" content="https://www.haircentrum.com/img/property.jpg"/>
 
-	<!-- Title of Site -->
-	<title>Hair Centrum - Hair Transplant & Plastic Surgery</title>
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="<?php echo $base_link; ?>assets/img/favicon.png">
 	<!-- Bootstrap CSS -->
@@ -194,18 +192,18 @@ include("admin/assets/functions.php");
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-6 lg-mb-30">
 					<div class="about__area-left">
-						<img class="img__full" src="<?php echo $base_link; ?>assets/img/about/about-1.jpg" alt="">
+						<img class="img__full" src="<?php echo $base_link.select("video_setup", "pic_url", 0); ?>" alt="">
                         <div class="about__area-left-play-icon video video-pulse">
-							<a class="video-popup" href="https://www.youtube.com/watch?v=2mlugW9L3zQ"><i class="fas fa-play"></i></a> 
+							<a class="video-popup" href="<?php echo select("video_setup", "video_link", 0); ?>"><i class="fas fa-play"></i></a> 
 						</div>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6">
 					<div class="about__area-title">
-						<span class="subtitle">Neden Hair Centrum?</span>
-						<h2>Başlık</h2>						
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quis quas iste laudantium veritatis earum odit vitae amet.</p>
-						<a class="theme-btn" href="#">Devam</a>
+						<span class="subtitle"><?php echo select("video_setup", "up_title_tr", 0); ?></span>
+						<h2><?php echo select("video_setup", "title_tr", 0); ?></h2>						
+						<p><?php echo select("video_setup", "text_tr", 0); ?></p>
+						<a class="theme-btn" href="<?php echo $base_link.select("video_setup", "button_link", 0); ?>">Devam</a>
 					</div>
 				</div>
 			</div>

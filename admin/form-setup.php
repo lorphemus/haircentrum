@@ -6,8 +6,8 @@ if(!$_SESSION['user_mail']){
 	header("Location:login.php");
 	exit();
 }
-$treeview="home";
-$page="slider";
+$treeview="contact";
+$page="form";
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +31,6 @@ $page="slider";
 
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="assets/vendor_components/Ionicons/css/ionicons.min.css">
-
-	<!-- Select2 -->
-	<link rel="stylesheet" href="assets/vendor_components/select2/dist/css/select2.min.css">
 
 	<!-- Theme style -->
 	<link rel="stylesheet" href="css/master_style.css">
@@ -75,40 +72,24 @@ $page="slider";
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h3>
-        Banner Düzenle
-      </h3>
+        Form Yazıları
     </section>
 
     <!-- Main content -->
     <section class="content">
 	<?php 
-	$query=$db->prepare("SELECT * FROM banner_settings");
-	$query->execute(array(0));
-	$get_slider=$query->fetch(PDO::FETCH_ASSOC);
+	$contact_query=$db->prepare("SELECT * FROM form WHERE id=?");
+	$contact_query->execute(array(0));
+	$get_cont=$contact_query->fetch(PDO::FETCH_ASSOC);
 	?>
       <!-- Default box -->
       <div class="box">
         <div class="box-body">
-			<form action="assets/process.php" method="POST" enctype="multipart/form-data">
-				<!-- Slider Picture -->
-				<div class="form-group">
-					<label>Banner Resim</label>
-					<br>
-					<img src="../<?php echo $get_slider["pic_url"]; ?>" width="400px";>
-				</div>
-				<div class="form-group">
-					<input type="file" name="slider_pic" value="<?php echo $get_slider["pic_url"]; ?>">
-				</div>
-				<div class="form-group">
-					<input type="hidden" name="slider_pic" value="<?php echo $get_slider["pic_url"]; ?>">
-					<button type="submit" class="btn btn-success" name="update_slider_pic"><i class="fa fa-refresh"></i> Resmi Güncelle</button>
-				</div
-			</form>
 			
+			<!-- Title -->
 			<form action="assets/process.php" method="post">
-				<!-- Slider UP Title -->
 				<div class="col-md-12" style="padding: 0">
-				  <h3>Banner Başlık</h3>
+				  <h3>Üst Başlık</h3>
 				  <!-- Custom Tabs -->
 				  <div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
@@ -120,33 +101,75 @@ $page="slider";
 					</ul>
 					<div class="tab-content">
 					  <div class="tab-pane active" id="tab_1">
-						<input type="text" class="form-control" name="title_tr" value="<?php echo $get_slider["title_tr"]; ?>" required>
+						<input type="text" class="form-control" name="up_title_tr" value="<?php echo $get_cont["up_title_tr"]; ?>" required>
 					  </div>
 					  <!-- /.tab-pane -->
 					  <div class="tab-pane" id="tab_2">
-						<input type="text" class="form-control" name="title_en" value="<?php echo $get_slider["title_en"]; ?>" required>
+						<input type="text" class="form-control" name="up_title_en" value="<?php echo $get_cont["up_title_en"]; ?>" required>
 					  </div>
 					  <!-- /.tab-pane -->
 					  <div class="tab-pane" id="tab_3">
-						<input type="text" class="form-control" name="title_ger" value="<?php echo $get_slider["title_ger"]; ?>" required>
+						<input type="text" class="form-control" name="up_title_ger" value="<?php echo $get_cont["up_title_ger"]; ?>" required>
 					  </div>
 					  <!-- /.tab-pane -->
 					  <div class="tab-pane" id="tab_4">
-						<input type="text" class="form-control" name="title_fr" value="<?php echo $get_slider["title_fr"]; ?>" required>
+						<input type="text" class="form-control" name="up_title_fr" value="<?php echo $get_cont["up_title_fr"]; ?>" required>
 					  </div>
 					  <!-- /.tab-pane -->
 					  <div class="tab-pane" id="tab_5">
-						<input style="direction:rtl;" type="text" class="form-control" name="title_ar" value="<?php echo $get_slider["title_ar"]; ?>" required>
+						<input style="direction: rtl;" type="text" class="form-control" name="up_title_ar" value="<?php echo $get_cont["up_title_ar"]; ?>" required>
 					  </div>
+					  <!-- /.tab-pane -->
 					</div>
 					<!-- /.tab-content -->
 				  </div>
 				  <!-- nav-tabs-custom -->
 				</div>
-								
-				<a href="sliderlist.php" class="btn btn-danger"><i class="fa fa-arrow-circle-o-left"></i> Vazgeç</a>
-				<button type="submit" name="edit_slider" class="btn btn-success"><i class="fa fa-refresh"></i> Banner Güncelle</button>
+				<button type="submit" name="up_title_update" class="btn btn-success"><i class="fa fa-check"></i> Güncelle</button>
 			</form>
+			
+			<!-- Short Text -->
+			<form action="assets/process.php" method="post">
+				<div class="col-md-12" style="padding: 0">
+				  <h3>Ana Başlık</h3>
+				  <!-- Custom Tabs -->
+				  <div class="nav-tabs-custom">
+					<ul class="nav nav-tabs">
+					  <li class="active"><a href="#tab_6" data-toggle="tab">Türkçe <img src="img/tr.png"></a></li>
+					  <li><a href="#tab_7" data-toggle="tab">İngilizce <img src="img/gb.png"></a></li>
+					  <li><a href="#tab_8" data-toggle="tab">Almanca <img src="img/de.png"></a></li>
+					  <li><a href="#tab_9" data-toggle="tab">Fransızca <img src="img/fr.png"></a></li>
+					  <li><a href="#tab_10" data-toggle="tab">Arapça <img src="img/ar.png"></a></li>
+					</ul>
+					<div class="tab-content">
+					  <div class="tab-pane active" id="tab_6">
+						<input type="text" class="form-control" name="main_title_tr" value="<?php echo $get_cont["main_title_tr"]; ?>" required>
+					  </div>
+					  <!-- /.tab-pane -->
+					  <div class="tab-pane" id="tab_7">
+						<input type="text" class="form-control" name="main_title_en" value="<?php echo $get_cont["main_title_en"]; ?>" required>
+					  </div>
+					  <!-- /.tab-pane -->
+					  <div class="tab-pane" id="tab_8">
+						<input type="text" class="form-control" name="main_title_ger" value="<?php echo $get_cont["main_title_ger"]; ?>" required>
+					  </div>
+					  <!-- /.tab-pane -->
+					  <div class="tab-pane" id="tab_9">
+						<input type="text" class="form-control" name="main_title_fr" value="<?php echo $get_cont["main_title_fr"]; ?>" required>
+					  </div>
+					  <!-- /.tab-pane -->
+					  <div class="tab-pane" id="tab_10">
+						<input style="direction: rtl;" type="text" class="form-control" name="main_title_ar" value="<?php echo $get_cont["main_title_ar"]; ?>" required>
+					  </div>
+					  <!-- /.tab-pane -->
+					</div>
+					<!-- /.tab-content -->
+				  </div>
+				  <!-- nav-tabs-custom -->
+				</div>
+				<button type="submit" name="main_title_update" class="btn btn-success"><i class="fa fa-check"></i> Güncelle</button>
+			</form>
+			
 		</div>
 		<!-- /.box-body -->
 		
@@ -198,9 +221,6 @@ $page="slider";
 	
 	<!-- Bootstrap 3.3.7 -->
 	<script src="assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-	<!-- Select2 -->
-	<script src="assets/vendor_components/select2/dist/js/select2.full.js"></script>
 	
 	<!-- SlimScroll -->
 	<script src="assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -208,17 +228,11 @@ $page="slider";
 	<!-- FastClick -->
 	<script src="assets/vendor_components/fastclick/lib/fastclick.js"></script>
 	
-	<!-- CKeditor -->
-	<script src="assets/vendor_plugins/ckeditor/ckeditor.js"></script>
-	
 	<!-- Cross Admin App -->
 	<script src="js/template.js"></script>
 	
 	<!-- Cross Admin for demo purposes -->
 	<script src="js/main.js"></script>
-
-	<!-- Cross Admin for advanced form element -->
-	<script src="js/pages/advanced-form-element.js"></script>
 	
 
 </body>

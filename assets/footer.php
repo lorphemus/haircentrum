@@ -23,10 +23,14 @@
                     <h5>Hizmetlerimiz</h5>
                     <div class="footer__area-widget-contact">
                         <ul>
-                            <li><a href="#">Saç Ekimi</a></li>
-                            <li><a href="#">Estetik</a></li>
-                            <li><a href="#">Diş Estetiği</a></li>
-                            <li><a href="#">Obezite Cerrahisi</a></li>
+                            <?php
+                            $query=$db->prepare("SELECT * FROM services ORDER BY service_rank");
+                            $query->execute();
+                            $services=$query->fetchAll();
+                            foreach($services as $service){
+                            ?>
+                            <li><a href="<?php echo $base_link; ?>services/<?=seo($service["service_title_tr"]).'/'.$service["id"]?>"><?php echo $service["service_title_tr"]; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

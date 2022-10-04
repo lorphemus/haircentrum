@@ -4,12 +4,12 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	config.filebrowserBrowseUrl = 'http://localhost/redline/admin/assets/vendor_plugins/kcfinder/browse.php?opener=ckeditor&type=files';
-	config.filebrowserImageBrowseUrl = 'http://localhost/redline/admin/assets/vendor_plugins/kcfinder/browse.php?opener=ckeditor&type=images';
-	config.filebrowserFlashBrowseUrl = 'http://localhost/redline/admin/assets/vendor_plugins/kcfinder/browse.php?opener=ckeditor&type=flash';
-	config.filebrowserUploadUrl = 'http://localhost/redline/admin/assets/vendor_plugins/kcfinder/upload.php?opener=ckeditor&type=files';
-	config.filebrowserImageUploadUrl = 'http://localhost/redline/admin/assets/vendor_plugins/kcfinder/upload.php?opener=ckeditor&type=images';
-	config.filebrowserFlashUploadUrl = 'http://localhost/redline/admin/assets/vendor_plugins/kcfinder/upload.php?opener=ckeditor&type=flash';
+	config.filebrowserBrowseUrl = 'http://localhost/haircentrum/admin/assets/vendor_plugins/kcfinder/browse.php?opener=ckeditor&type=files';
+	config.filebrowserImageBrowseUrl = 'http://localhost/haircentrum/admin/assets/vendor_plugins/kcfinder/browse.php?opener=ckeditor&type=images';
+	config.filebrowserFlashBrowseUrl = 'http://localhost/haircentrum/admin/assets/vendor_plugins/kcfinder/browse.php?opener=ckeditor&type=flash';
+	config.filebrowserUploadUrl = 'http://localhost/haircentrum/admin/assets/vendor_plugins/kcfinder/upload.php?opener=ckeditor&type=files';
+	config.filebrowserImageUploadUrl = 'http://localhost/haircentrum/admin/assets/vendor_plugins/kcfinder/upload.php?opener=ckeditor&type=images';
+	config.filebrowserFlashUploadUrl = 'http://localhost/haircentrum/admin/assets/vendor_plugins/kcfinder/upload.php?opener=ckeditor&type=flash';
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';

@@ -2727,7 +2727,7 @@ Video Animation CSS
   align-items: center;
 }
 .header__area-menubar-right-box-search {
-  margin-left: 50px;
+  margin-left: 0;
 }
 .header__area-menubar-right-box-search-icon i {
   cursor: pointer;
@@ -2753,17 +2753,24 @@ Video Animation CSS
   transition: 0.5s;
   overflow: hidden;
 }
-.header__area-menubar-right-box-search-box form {
+.header__area-menubar-right-box-search-box ul {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 60%;
   transform: translate(-50%, -50%);
-  width: 55%;
+  width: 50%;
 }
-.header__area-menubar-right-box-search-box input {
-  background: var(--white);
-  color: var(--heading-color);
-  border: 0;
+.header__area-menubar-right-box-search-box ul li{
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  color: #D0D0D0;
+  list-style-type: none;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  align-content: space-evenly;
 }
 .header__area-menubar-right-box-search-box button {
   position: absolute;
@@ -2925,8 +2932,8 @@ Video Animation CSS
   right: 0;
 }
 .header__area-menubar-right-sidebar-popup-icon {
-  padding: 44px 0 43px 100px;
-  margin-left: 60px;
+  padding: 44px 0 43px 50px;
+  margin-left: 40px;
   border-left: 1px solid var(--border-color-2);
 }
 .header__area-menubar-right-sidebar-popup-icon span {
@@ -3584,7 +3591,6 @@ Video Animation CSS
   margin-bottom: 30px;
 }
 .mission__area-title p {
-  max-width: 485px;
   margin-bottom: 30px;
 }
 .mission__area-title .subtitle {

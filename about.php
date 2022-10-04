@@ -11,7 +11,7 @@ include("admin/assets/functions.php");
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_tr", 0); ?></title>
+    <title><?php echo select("seo_setup", "title_tr", 0); ?> | Hakkımızda</title>
     <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
     <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
     <meta name="subject" content="Hair Transplant & Plastic Surgery">
@@ -23,8 +23,6 @@ include("admin/assets/functions.php");
 	<meta property="og:url" content="https://www.haircentrum.com">
 	<meta property="og:image" content="https://www.haircentrum.com/img/property.jpg"/>
 
-	<!-- Title of Site -->
-	<title>Hair Centrum - Hair Transplant & Plastic Surgery | Hakkımızda</title>
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="<?php echo $base_link; ?>assets/img/favicon.png">
 	<!-- Bootstrap CSS -->
@@ -56,7 +54,7 @@ include("admin/assets/functions.php");
 	<?php include("assets/header.php"); ?>    
 	<!-- Header Area End -->		
 	<!-- Page Banner Area Start -->
-    <div class="page__banner" data-background="<?php echo $base_link; ?>assets/img/banner/page-banner.jpg">
+    <div class="page__banner" data-background="<?php echo $base_link.select("about_bg", "pic_url", 0); ?>">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -77,24 +75,12 @@ include("admin/assets/functions.php");
 	<!-- Mission Area Start -->	
     <div class="mission__area section-padding">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-7 col-lg-6 lg-mb-30">
-                    <div class="mission__area-left">
-						<div class="mission__area-left-image">
-							<img src="<?php echo $base_link; ?>assets/img/about/about-2.jpg" alt="">
-							<div class="mission__area-left-image-one">
-								<img src="<?php echo $base_link; ?>assets/img/about/about-3.jpg" alt="">
-							</div>
-						</div>
-					</div>
-                </div>
-                <div class="col-xl-5 col-lg-6">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
                     <div class="mission__area-title">
-						<span class="subtitle">HAIR CENTRUM</span>
-						<h2>BAŞLIK</h2>	
-                        <p>Nam id metus ut ligula dignissim euismod. Nullam euismod vulputate sem, malesuada accumsan orci dignissim vitae. Curabitur vitae elit consectetur,</p>                        
-                        <span class="mb-30"><i class="far fa-check"></i>Recreational Architecture</span>                        
-                        <span><i class="far fa-check"></i>Institutional Architecture</span>           
+						<span class="subtitle"><?php echo select("about", "up_title_tr", 0); ?></span>
+						<h2><?php echo select("about", "main_title_tr", 0); ?></h2>	
+                        <p><?php echo select("about", "text_tr", 0); ?></p>                        
                     </div>
                 </div>
             </div>
@@ -102,13 +88,13 @@ include("admin/assets/functions.php");
     </div>
 	<!-- Mission Area End -->	
 	<!-- Appointment Area Start -->	
-	<div class="appointment__area" data-background="<?php echo $base_link; ?>assets/img/property/resources.jpg">
+	<div class="appointment__area" data-background="<?php echo $base_link.select("casetup", "pic_url", 0); ?>">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="appointment__area-title">
-						<h2>SİZİN İÇİN EN İYİSİ</h2>
-						<a href="#" class="theme-btn">HEMEN RANDEVU ALIN</a>
+						<h2><?php echo select("casetup", "title_tr", 0); ?></h2>
+						<a href="<?php echo $base_link; ?>contact.php" class="theme-btn"><?php echo select("casetup", "link_text_tr", 0); ?></a>
 					</div>
 				</div>
 			</div>
@@ -122,8 +108,8 @@ include("admin/assets/functions.php");
 			<div class="row mb-60">
 				<div class="col-xl-12">
 					<div class="working__process-title t-center">
-						<span class="subtitle">Slogan Başlık</span>
-						<h2>Süreç</h2>
+						<span class="subtitle"><?php echo select("otherserv", "up_title_tr", 0); ?></span>
+						<h2><?php echo select("otherserv", "main_title_tr", 0); ?></h2>
 					</div>					
 				</div>
 			</div>
@@ -135,8 +121,8 @@ include("admin/assets/functions.php");
 							<span>01</span>
 						</div>
 						<div class="working__process-item-content">
-							<h5>Havaalanı Transfer</h5>
-							<p>Praesent vulputate cursus ante et dictum. Maecenas</p>
+							<h5><?php echo select("otherserv", "box1_title_tr", 0); ?></h5>
+							<p><?php echo select("otherserv", "box1_text_tr", 0); ?></p>
 						</div>
 					</div>
 				</div>
@@ -147,8 +133,8 @@ include("admin/assets/functions.php");
 							<span>02</span>
 						</div>
 						<div class="working__process-item-content">
-							<h5>Hotel Konaklama</h5>
-							<p>Praesent vulputate cursus ante et dictum. Maecenas</p>
+							<h5><?php echo select("otherserv", "box2_title_tr", 0); ?></h5>
+							<p><?php echo select("otherserv", "box2_text_tr", 0); ?></p>
 						</div>
 					</div>
 				</div>
@@ -159,8 +145,8 @@ include("admin/assets/functions.php");
 							<span>03</span>
 						</div>
 						<div class="working__process-item-content">
-							<h5>Saç Bakım Seti</h5>
-							<p>Praesent vulputate cursus ante et dictum. Maecenas</p>
+							<h5><?php echo select("otherserv", "box3_title_tr", 0); ?></h5>
+							<p><?php echo select("otherserv", "box3_text_tr", 0); ?></p>
 						</div>
 					</div>
 				</div>

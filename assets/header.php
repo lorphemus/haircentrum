@@ -23,20 +23,26 @@
                                 <?php } ?>
                             </ul>
                         </li>
+                        <li><a href="<?php echo $base_link; ?>gallery.php">Galeri</a></li>
                         <li><a href="<?php echo $base_link; ?>contact.php">İletişim</a></li>
                     </ul>
                 </div>
             </div>
             <div class="header__area-menubar-right">
                 <div class="header__area-menubar-right-box">
-                    <div class="dropdown" id="selector">
-                        <button class="dropbtn" onclick="showmenu()"><i class="fal fa-globe"></i> Language</button>
-                        <div class="dropdown-content">
-                            <a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/tr.png"/> Türkçe</a>
-                            <a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/gb.png"/> English</a>
-                            <a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/de.png"/> Deutsch</a>
-                            <a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/fr.png"/> Français</a>
-                            <a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/ar.png"/> عربي</a>
+                    <div class="header__area-menubar-right-box-search">
+                        <div class="search">	
+                            <span class="header__area-menubar-right-box-search-icon open"><i class="fal fa-globe"></i></span>
+                        </div>
+                        <div class="header__area-menubar-right-box-search-box">
+                            <ul>
+                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/tr.png"/> Türkçe</a></li>
+                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/gb.png"/> English</a></li>
+                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/de.png"/> Deutsch</a></li>
+                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/fr.png"/> Français</a></li>
+                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/ar.png"/> عربي</a></li>
+                            </ul>            
+                            <span class="header__area-menubar-right-box-search-box-icon"><i class="fal fa-times"></i></span>
                         </div>
                     </div>
                     <div class="header__area-menubar-right-sidebar">
@@ -46,11 +52,11 @@
                     <div class="header__area-menubar-right-sidebar-popup">
                         <div class="sidebar-close-btn"><i class="fal fa-times"></i></div>
                         <div class="header__area-menubar-right-sidebar-popup-logo">
-                            <a href="index.php"> <img src="assets/img/Logo.png" alt=""> </a>
+                            <a href="index.php"> <img src="<?php echo $base_link; ?>assets/img/logo.png" alt=""> </a>
                         </div>
                         <p><?php echo select("seo_setup", "short_about_tr", 0); ?></p>
                         <div class="header__area-menubar-right-box-sidebar-popup-image">
-                            <img src="assets/img/bar.jpg" alt="">
+                            <img src="<?php echo $base_link; ?>assets/img/bar.jpg" alt="">
                         </div>
                         <div class="header__area-menubar-right-box-sidebar-popup-contact">
                             <h4 class="mb-30">İletişim Bilgileri</h4>

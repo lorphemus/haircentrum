@@ -5,7 +5,7 @@ include 'connect.php';
 
 if(!empty($_FILES))
 {
-  $uploads_dir = '../../img/gallery';
+  $uploads_dir = '../../assets/img/gallery';
 	@$tmp_name = $_FILES['file']["tmp_name"];
 	@$name = $_FILES['file']["name"];
 	$name=preg_replace("/[^a-zA-Z0-9.]/", "", $name);

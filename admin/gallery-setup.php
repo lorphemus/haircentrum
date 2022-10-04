@@ -6,8 +6,8 @@ if(!$_SESSION['user_mail']){
 	header("Location:login.php");
 	exit();
 }
-$treeview="home";
-$page="slider";
+$treeview="gallery";
+$page="gallerylist";
 ?>
 
 <!DOCTYPE html>
@@ -32,14 +32,17 @@ $page="slider";
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="assets/vendor_components/Ionicons/css/ionicons.min.css">
 
-	<!-- Select2 -->
-	<link rel="stylesheet" href="assets/vendor_components/select2/dist/css/select2.min.css">
-
 	<!-- Theme style -->
 	<link rel="stylesheet" href="css/master_style.css">
 
 	<!-- Cross Admin skins -->
-	<link rel="stylesheet" href="css/skins/_all-skins.css">	
+	<link rel="stylesheet" href="css/skins/_all-skins.css">
+	
+	<!-- Checkbox -->
+	<link rel="stylesheet" href="assets/vendor_plugins/iCheck/all.css">
+	
+	<!-- DropeZone CSS -->
+	<link rel="stylesheet" href="css/dropzone.css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,6 +56,17 @@ $page="slider";
 	
 	<!-- Sweet Alert -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<style media="screen">
+	.dropzone{
+		border:2px dashed #444;
+		height: 200px;
+		background-color: #f1f1f1;
+		font-size: 15px;
+		font-style: italic;
+		text-align: center;
+		padding-top: 30px;
+		}
+  </style>
 	
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
@@ -75,81 +89,56 @@ $page="slider";
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h3>
-        Banner Düzenle
+        Öncesi Sonrası Galeri
       </h3>
     </section>
 
     <!-- Main content -->
     <section class="content">
-	<?php 
-	$query=$db->prepare("SELECT * FROM banner_settings");
-	$query->execute(array(0));
-	$get_slider=$query->fetch(PDO::FETCH_ASSOC);
-	?>
-      <!-- Default box -->
+	  <!-- Default box -->
       <div class="box">
         <div class="box-body">
-			<form action="assets/process.php" method="POST" enctype="multipart/form-data">
-				<!-- Slider Picture -->
-				<div class="form-group">
-					<label>Banner Resim</label>
-					<br>
-					<img src="../<?php echo $get_slider["pic_url"]; ?>" width="400px";>
+		<h3>Galeri Resim</h3>
+			<form id="uploadImagesForm" role="form" class="dropzone" action="assets/galleryimageadd.php" method="post" enctype="multipart/form-data" style="width:100%;">
+							
+				<div class="dz-message" data-dz-message>
+					<span><i class="fa fa-image fa-3x" ></i></span><br>
+					<span>Yüklemek istediğiniz resimleri bu alana sürükleyip bırakın... (Veya tıklayın)</span>
 				</div>
-				<div class="form-group">
-					<input type="file" name="slider_pic" value="<?php echo $get_slider["pic_url"]; ?>">
-				</div>
-				<div class="form-group">
-					<input type="hidden" name="slider_pic" value="<?php echo $get_slider["pic_url"]; ?>">
-					<button type="submit" class="btn btn-success" name="update_slider_pic"><i class="fa fa-refresh"></i> Resmi Güncelle</button>
-				</div
-			</form>
-			
-			<form action="assets/process.php" method="post">
-				<!-- Slider UP Title -->
-				<div class="col-md-12" style="padding: 0">
-				  <h3>Banner Başlık</h3>
-				  <!-- Custom Tabs -->
-				  <div class="nav-tabs-custom">
-					<ul class="nav nav-tabs">
-					  <li class="active"><a href="#tab_1" data-toggle="tab">Türkçe <img src="img/tr.png"></a></li>
-					  <li><a href="#tab_2" data-toggle="tab">İngilizce <img src="img/gb.png"></a></li>
-					  <li><a href="#tab_3" data-toggle="tab">Almanca <img src="img/de.png"></a></li>
-					  <li><a href="#tab_4" data-toggle="tab">Fransızca <img src="img/fr.png"></a></li>
-					  <li><a href="#tab_5" data-toggle="tab">Arapça <img src="img/ar.png"></a></li>
-					</ul>
-					<div class="tab-content">
-					  <div class="tab-pane active" id="tab_1">
-						<input type="text" class="form-control" name="title_tr" value="<?php echo $get_slider["title_tr"]; ?>" required>
-					  </div>
-					  <!-- /.tab-pane -->
-					  <div class="tab-pane" id="tab_2">
-						<input type="text" class="form-control" name="title_en" value="<?php echo $get_slider["title_en"]; ?>" required>
-					  </div>
-					  <!-- /.tab-pane -->
-					  <div class="tab-pane" id="tab_3">
-						<input type="text" class="form-control" name="title_ger" value="<?php echo $get_slider["title_ger"]; ?>" required>
-					  </div>
-					  <!-- /.tab-pane -->
-					  <div class="tab-pane" id="tab_4">
-						<input type="text" class="form-control" name="title_fr" value="<?php echo $get_slider["title_fr"]; ?>" required>
-					  </div>
-					  <!-- /.tab-pane -->
-					  <div class="tab-pane" id="tab_5">
-						<input style="direction:rtl;" type="text" class="form-control" name="title_ar" value="<?php echo $get_slider["title_ar"]; ?>" required>
-					  </div>
-					</div>
-					<!-- /.tab-content -->
-				  </div>
-				  <!-- nav-tabs-custom -->
-				</div>
-								
-				<a href="sliderlist.php" class="btn btn-danger"><i class="fa fa-arrow-circle-o-left"></i> Vazgeç</a>
-				<button type="submit" name="edit_slider" class="btn btn-success"><i class="fa fa-refresh"></i> Banner Güncelle</button>
+
 			</form>
 		</div>
 		<!-- /.box-body -->
 		
+		<!-- Gallery -->
+		<div class="box">
+			<form role="form" action="assets/process.php" method="post">
+			<div class="box-body">
+				<div class="row">
+					  <?php 
+					  $query=$db->prepare("SELECT * FROM gallery ORDER BY id ASC");
+					  $query->execute();
+					  $pics=$query->fetchAll();
+					  $id=1;
+					  foreach($pics as $pic){
+					  ?>
+					  <div class="col-md-4">
+						<div class="thumbnail">
+						    <img class="img-fluid" src="../<?php echo $pic["pic_url"]; ?>" alt="Lights" style="width:50%">
+							<div class="checkbox">
+								<input type="checkbox" id="md_checkbox<?php echo $id;?>" class="filled-in chk-col-red" name="delete_gallery[]" value="<?php echo $pic['id']; ?>" />
+								<label for="md_checkbox<?php echo $id;?>">Silmek İçin Seçin</label>
+							</div>
+						</div>
+					  </div>
+					  <?php $id++; } ?>
+				</div>
+			</div>
+			<div class="box-footer">
+			  <button type="submit" class="btn btn-danger" name="delete_galleryimages"><i class="fa fa-trash"></i> Seçilen Resimleri Sil</button>
+			</div>
+			</form>	
+		</div>
 		  
 		<?php
 		  if(isset($_SESSION['status']) && $_SESSION['status'] !='')
@@ -198,9 +187,6 @@ $page="slider";
 	
 	<!-- Bootstrap 3.3.7 -->
 	<script src="assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-	<!-- Select2 -->
-	<script src="assets/vendor_components/select2/dist/js/select2.full.js"></script>
 	
 	<!-- SlimScroll -->
 	<script src="assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -216,9 +202,25 @@ $page="slider";
 	
 	<!-- Cross Admin for demo purposes -->
 	<script src="js/main.js"></script>
-
-	<!-- Cross Admin for advanced form element -->
-	<script src="js/pages/advanced-form-element.js"></script>
+	
+	<!-- Checkbox -->
+	<script src="assets/vendor_plugins/iCheck/icheck.min.js"></script>
+	
+	<!-- DropeZone JS -->
+	<script src="js/dropzone.js"></script>
+	<script>
+	Dropzone.options.uploadImagesForm = {
+	maxFilesize: 3,
+	acceptedFiles: '.jpg, .jpeg, .png, .bmp',
+	init: function() {
+		this.on('success', function(){
+			if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
+     				location.reload();
+				}
+	    	});
+		}
+	};
+	</script>
 	
 
 </body>

@@ -22,7 +22,7 @@ $_CONFIG = array(
 // GENERAL SETTINGS
 
     'disabled' => false,
-    'uploadURL' => "http://localhost/redline/assets/images/text-images",
+    'uploadURL' => "http://localhost/haircentrum/assets/img/text",
     'uploadDir' => "",
     'theme' => "default",
 
