@@ -88,27 +88,6 @@ include("admin/assets/functions.php");
         </div>
     </div>
     <!-- Services Details End -->
-	<!-- Subscribe Area Start -->	
-	<div class="subscribe__area">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-xl-7 col-md-5">
-					<div class="subscribe__area-title">
-						<h3>Kampanyalardan haberdar olun</h3>
-					</div>
-				</div>
-				<div class="col-xl-5 col-md-7">
-					<div class="subscribe__area-subscribe">
-						<form action="#">
-							<input type="text" name="email" placeholder="Email Adresiniz" required="">
-							<button class="theme-btn" type="submit">Gönder</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Subscribe Area End -->
 
 	<!-- Footer Area Start -->	
 	<?php include("assets/footer.php"); ?>

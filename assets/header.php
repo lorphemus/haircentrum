@@ -3,7 +3,7 @@
         <div class="header__area-menubar">
             <div class="header__area-menubar-left">
                 <div class="header__area-menubar-left-logo">
-                    <a href="index.php"><img src="<?php echo $base_link; ?>assets/img/logo.png" alt=""></a>
+                    <a href="<?php echo $base_link; ?>index.php"><img src="<?php echo $base_link; ?>assets/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="header__area-menubar-center">
@@ -36,11 +36,11 @@
                         </div>
                         <div class="header__area-menubar-right-box-search-box">
                             <ul>
-                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/tr.png"/> Türkçe</a></li>
-                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/gb.png"/> English</a></li>
-                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/de.png"/> Deutsch</a></li>
-                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/fr.png"/> Français</a></li>
-                               <li><a href="#"><img src="<?php echo $base_link; ?>assets/img/lang/ar.png"/> عربي</a></li>
+                               <li><a href="<?php echo $base_link; ?>index.php"><img src="<?php echo $base_link; ?>assets/img/lang/tr.png"/> Türkçe</a></li>
+                               <li><a href="<?php echo $base_link; ?>en/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/gb.png"/> English</a></li>
+                               <li><a href="<?php echo $base_link; ?>ger/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/de.png"/> Deutsch</a></li>
+                               <li><a href="<?php echo $base_link; ?>fr/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/fr.png"/> Français</a></li>
+                               <li><a href="<?php echo $base_link; ?>ar/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/ar.png"/> عربي</a></li>
                             </ul>            
                             <span class="header__area-menubar-right-box-search-box-icon"><i class="fal fa-times"></i></span>
                         </div>
@@ -84,14 +84,16 @@
                                 </div>
                                 <div class="header__area-menubar-right-box-sidebar-popup-contact-item-content">
                                     <span>Adresimiz</span>
-                                    <h6><a href="#"><?php echo select("contact_settings", "address", 0); ?></a></h6>
+                                    <h6><a href="<?php echo $base_link; ?>contact.php"><?php echo select("contact_settings", "address", 0); ?></a></h6>
                                 </div>
                             </div>
                         </div>
                         <div class="header__area-menubar-right-box-sidebar-popup-social">
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li <?php if(empty(select("social_media", "instagram", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "instagram", 0); ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li <?php if(empty(select("social_media", "facebook", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "facebook", 0); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li <?php if(empty(select("social_media", "twitter", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "twitter", 0); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li <?php if(empty(select("social_media", "youtube", 0))){echo 'style="display: none;"';} ?>><a href="<?php echo select("social_media", "youtube", 0); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
                             </ul>							
                         </div>
                     </div>

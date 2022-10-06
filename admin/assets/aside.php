@@ -31,7 +31,7 @@
           <ul class="treeview-menu">
             <li <?php if(@$page=='aboutbg'){ echo 'class="active"'; } ?>><a href="about-bg-setup.php"><i class="fa fa-image"></i> Sayfa Başlık Resmi</a></li>
             <li <?php if(@$page=='aboutpage'){ echo 'class="active"'; } ?>><a href="about-setup.php"><i class="fa fa-list-alt"></i> Sayfa İçerik</a></li>
-            <li <?php if(@$page=='casetup'){ echo 'class="active"'; } ?>><a href="call-to-action-setup.php"><i class="fa fa-caret-square-o-right"></i> Duyuru Ayarları</a></li>
+            <li <?php if(@$page=='casetup'){ echo 'class="active"'; } ?>><a href="call-to-action-setup.php"><i class="fa fa-bullhorn"></i> Duyuru Ayarları</a></li>
             <li <?php if(@$page=='otherserv'){ echo 'class="active"'; } ?>><a href="other-services-setup.php"><i class="fa fa-check-square-o"></i> Diğer Hizmetler</a></li>
           </ul>
         </li>
@@ -39,6 +39,7 @@
           <ul class="treeview-menu">
               <li <?php if(@$page=='servicebg'){ echo 'class="active"'; } ?>><a href="service-bg-setup.php"><i class="fa fa-image"></i> Sayfa Başlık Resmi</a></li>
               <li <?php if(@$page=='servicelist'){ echo 'class="active"'; } ?>><a href="serviceslist.php"><i class="fa fa-cubes"></i> Hizmetler</a></li>
+              <li <?php if(@$page=='service_aside'){ echo 'class="active"'; } ?>><a href="aside-setup.php"><i class="fa fa-id-badge"></i> Kenar Alan</a></li>
           </ul>
         </li>
         <li class="treeview <?php if(@$treeview=="gallery"){echo 'active';} ?>"> <a href="#"> <i class="fa fa-camera"></i> <span>Resim Galeri Ayarları</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
@@ -50,7 +51,8 @@
         <li class="treeview <?php if(@$treeview=="contact"){echo 'active';} ?>"> <a href="#"> <i class="fa fa-address-card"></i> <span>İletişim Sayfa Ayarları</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
               <li <?php if(@$page=='contactbg'){ echo 'class="active"'; } ?>><a href="contact-bg-setup.php"><i class="fa fa-image"></i> Sayfa Başlık Resmi</a></li>
-              <li <?php if(@$page=='form'){ echo 'class="active"'; } ?>><a href="form-setup.php"><i class="fa fa-comment"></i> Sayfa Başlık Ayarları</a></li>
+              <li <?php if(@$page=='form'){ echo 'class="active"'; } ?>><a href="form-setup.php"><i class="fa fa-list-ul"></i> Sayfa Başlık Ayarları</a></li>
+              <li <?php if(@$page=='newsletter'){ echo 'class="active"'; } ?>><a href="newsletter-setup.php"><i class="fa fa-envelope-open"></i> E-Bülten Ayarları</a></li>
           </ul>
         </li>
       

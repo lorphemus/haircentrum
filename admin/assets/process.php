@@ -459,14 +459,14 @@ if(isset($_POST['update_video_pic'])){
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
 		$_SESSION['icon'] = "error";
-		header("Location:../about-bg-setup.php");
+		header("Location:../video-setup.php");
 		exit();
 	}
 	if($_FILES['video_pic']['size']>2097152){
 		$_SESSION['title'] = "Hata!";
 		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 2MB. üzerinde olmamalıdır.";
 		$_SESSION['icon'] = "error";
-		header("Location:../about-bg-setup.php");
+		header("Location:../video-setup.php");
 		exit();
 	}else{
 		$uploads_dir='../../assets/img/about';
@@ -1135,6 +1135,99 @@ if(isset($_POST["delete_service"])){
 	}
 }
 
+/* Aside Picture Update */
+if(isset($_POST['update_aside_pic'])){
+	
+	$allowed_ext=array("jpg","png","gif");
+	
+	$ext=strtolower(substr($_FILES['aside_pic']['name'],strpos($_FILES['aside_pic']['name'],'.')+1));
+	if(in_array($ext, $allowed_ext)===false){
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "Yüklemek istediğiniz resim JPG, PNG veya GIF formatında olmalıdır.";
+		$_SESSION['icon'] = "error";
+		header("Location:../aside-setup.php");
+		exit();
+	}
+	if($_FILES['aside_pic']['size']>2097152){
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "Yüklemek istediğiniz resimin boyutu 2MB. üzerinde olmamalıdır.";
+		$_SESSION['icon'] = "error";
+		header("Location:../aside-setup.php");
+		exit();
+	}else{
+		$uploads_dir='../../assets/img/about';
+		@$tmp_name=$_FILES['aside_pic']["tmp_name"];
+		@$name=$_FILES['aside_pic']["name"];
+		$name=preg_replace("/[^a-zA-Z0-9.]/", "", $name);
+		$benzersizsayi1=rand(20000,32000);
+		$benzersizsayi2=rand(20000,32000);
+		$benzersizad=$benzersizsayi1.$benzersizsayi2;
+		$refimgyol=substr($uploads_dir,6)."/".$benzersizad.$name;
+		@move_uploaded_file($tmp_name,"$uploads_dir/$benzersizad$name");
+
+		$edit_service_bg=$db->prepare("UPDATE aside_settings SET
+		pic_url=:pic WHERE id=0");
+
+		$updated=$edit_service_bg->execute(array(
+		'pic'    => $refimgyol));
+		
+		$unlink=$_POST["unlink"];
+
+		if($updated){
+			unlink("../../$unlink");
+			$_SESSION['title'] = "İşlem Başarılı";
+			$_SESSION['status'] = "Resim başarılı bir şekilde güncellenmiştir.";
+			$_SESSION['icon'] = "success";
+			header("Location:../aside-setup.php");
+		}else{
+			$_SESSION['title'] = "Hata!";
+			$_SESSION['status'] = "Resim güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+			$_SESSION['icon'] = "error";
+			header("Location:../aside-setup.php");
+		}
+	}
+}
+
+/* Aside Title Update */
+if(isset($_POST["aside_title_update"])){
+	$title_edit=$db->prepare("UPDATE aside_settings SET
+		up_title_tr=:up_title_tr,
+		up_title_en=:up_title_en,
+		up_title_ger=:up_title_ger,
+		up_title_fr=:up_title_fr,
+		up_title_ar=:up_title_ar,
+		title_tr=:title_tr,
+		title_en=:title_en,
+		title_ger=:title_ger,
+		title_fr=:title_fr,
+		title_ar=:title_ar WHERE id=0");
+	
+	$update=$title_edit->execute(array(
+		"up_title_tr" => htmlspecialchars(trim($_POST["up_title_tr"])),
+		"up_title_en" => htmlspecialchars(trim($_POST["up_title_en"])),
+		"up_title_ger" => htmlspecialchars(trim($_POST["up_title_ger"])),
+		"up_title_fr" => htmlspecialchars(trim($_POST["up_title_fr"])),
+		"up_title_ar" => htmlspecialchars(trim($_POST["up_title_ar"])),
+		"title_tr" => htmlspecialchars(trim($_POST["title_tr"])),
+		"title_en" => htmlspecialchars(trim($_POST["title_en"])),
+		"title_ger" => htmlspecialchars(trim($_POST["title_ger"])),
+		"title_fr" => htmlspecialchars(trim($_POST["title_fr"])),
+		"title_ar" => htmlspecialchars(trim($_POST["title_ar"]))
+	));
+	
+	if($update){
+		$_SESSION['title'] = "İşlem Başarılı";
+		$_SESSION['status'] = "Yazılar başarılı bir şekilde güncellenmiştir.";
+		$_SESSION['icon'] = "success";
+		header("Location:../aside-setup.php");
+	}else{
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "Yazılar güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+		$_SESSION['icon'] = "error";
+		header("Location:../aside-setup.php");
+	}
+}
+
 /* Gallery Page Cover */
 if(isset($_POST['gallery_page_picture_update'])){
 	
@@ -1329,6 +1422,66 @@ if(isset($_POST["main_title_update"])){
 		$_SESSION['status'] = "Sayfa başlık güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
 		$_SESSION['icon'] = "error";
 		header("Location:../form-setup.php");
+	}
+}
+
+/* Newsletter Title Update */
+if(isset($_POST["nl_title_update"])){
+	$edit_form_title=$db->prepare("UPDATE newsletter_settings SET
+	nl_title_tr=:nl_title_tr,
+	nl_title_en=:nl_title_en,
+	nl_title_ger=:nl_title_ger,
+	nl_title_fr=:nl_title_fr,
+	nl_title_ar=:nl_title_ar WHERE id=0");
+	
+	$update=$edit_form_title->execute(array(
+	"nl_title_tr"  => htmlspecialchars(trim($_POST["nl_title_tr"])),
+	"nl_title_en"  => htmlspecialchars(trim($_POST["nl_title_en"])),
+	"nl_title_ger" => htmlspecialchars(trim($_POST["nl_title_ger"])),
+	"nl_title_fr" => htmlspecialchars(trim($_POST["nl_title_fr"])),
+	"nl_title_ar"  => htmlspecialchars(trim($_POST["nl_title_ar"]))
+	));
+	
+	if($update){
+		$_SESSION['title'] = "İşlem Başarılı";
+		$_SESSION['status'] = "E-bülten yazısı başarılı bir şekilde güncellenmiştir.";
+		$_SESSION['icon'] = "success";
+		header("Location:../newsletter-setup.php");
+	}else{
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "E-bülten yazısı güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+		$_SESSION['icon'] = "error";
+		header("Location:../newsletter-setup.php");
+	}
+}
+
+/* Newsletter Button Title Update */
+if(isset($_POST["btn_title_update"])){
+	$edit_form_title=$db->prepare("UPDATE newsletter_settings SET
+	btn_title_tr=:btn_title_tr,
+	btn_title_en=:btn_title_en,
+	btn_title_ger=:btn_title_ger,
+	btn_title_fr=:btn_title_fr,
+	btn_title_ar=:btn_title_ar WHERE id=0");
+	
+	$update=$edit_form_title->execute(array(
+	"btn_title_tr"  => htmlspecialchars(trim($_POST["btn_title_tr"])),
+	"btn_title_en"  => htmlspecialchars(trim($_POST["btn_title_en"])),
+	"btn_title_ger" => htmlspecialchars(trim($_POST["btn_title_ger"])),
+	"btn_title_fr" => htmlspecialchars(trim($_POST["btn_title_fr"])),
+	"btn_title_ar"  => htmlspecialchars(trim($_POST["btn_title_ar"]))
+	));
+	
+	if($update){
+		$_SESSION['title'] = "İşlem Başarılı";
+		$_SESSION['status'] = "Buton yazısı başarılı bir şekilde güncellenmiştir.";
+		$_SESSION['icon'] = "success";
+		header("Location:../newsletter-setup.php");
+	}else{
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "Buton yazısı güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+		$_SESSION['icon'] = "error";
+		header("Location:../newsletter-setup.php");
 	}
 }
 

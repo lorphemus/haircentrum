@@ -15,14 +15,14 @@
                 </ul>
             </div>
         </div>
-        <div class="all__sidebar-item-help mt-30" data-background="<?php echo $base_link; ?>assets/img/about/about-3.jpg">
-            <h3>Uzman Ekibimiz</h3>
+        <div class="all__sidebar-item-help mt-30" data-background="<?php echo $base_link.select("aside_settings", "pic_url", 0); ?>">
+            <h3><?php echo select("aside_settings", "up_title_tr", 0); ?></h3>
             <div class="all__sidebar-item-help-contact">
                 <div class="all__sidebar-item-help-contact-icon">
                     <i class="fal fa-phone-alt"></i>
                 </div>
                 <div class="all__sidebar-item-help-contact-content">
-                    <span>Bizi Hemen Arayın</span>
+                    <span><?php echo select("aside_settings", "title_tr", 0); ?></span>
                     <h4><a href="tel:<?php echo select("contact_settings", "phone", 0); ?>"><?php echo select("contact_settings", "phone", 0); ?></a></h4>
                 </div>
             </div>

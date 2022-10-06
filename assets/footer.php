@@ -1,3 +1,35 @@
+<!-- Subscribe Area Start -->	
+<div class="subscribe__area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-7 col-md-5">
+                <div class="subscribe__area-title">
+                    <h3><?php echo select("newsletter_settings", "nl_title_tr", 0); ?></h3>
+                </div>
+            </div>
+            <div class="col-xl-5 col-md-7">
+                <div class="subscribe__area-subscribe">
+                    <form action="#">
+                        <input type="text" name="email" placeholder="Email Adresiniz" required="">
+                        <button class="theme-btn" type="submit"><?php echo select("newsletter_settings", "btn_title_tr", 0); ?></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subscribe Area End -->
+
+<!-- Whatsapp Button -->
+<div class="floating_btn">
+    <a target="_blank" href="https://wa.me/<?php echo select("contact_settings", "whatsapp", 0); ?>?text=Hizmetleriniz%20hakkında%20bilgi%20almak%20istiyorum">
+    <div class="contact_icon">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+    </a>
+</div>
+<!-- Whatsapp Button End -->
+
 <div class="footer__area">
     <div class="container">
         <div class="row">
@@ -41,7 +73,7 @@
                     <h5>Bize Ulaşın</h5>
                     <div class="footer__area-widget-contact">
                         <ul>
-                            <li><a href="#"><?php echo select("contact_settings", "address", 0); ?></a></li>
+                            <li><a href="<?php echo $base_link; ?>contact.php"><?php echo select("contact_settings", "address", 0); ?></a></li>
                             <li><a href="mailto:<?php echo select("contact_settings", "mail", 0); ?>"><?php echo select("contact_settings", "mail", 0); ?></a></li>
                             <li><a href="tel:<?php echo select("contact_settings", "phone", 0); ?>"><?php echo select("contact_settings", "phone", 0); ?></a></li>
                         </ul>
