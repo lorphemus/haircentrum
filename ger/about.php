@@ -1,25 +1,25 @@
 <?php 
 ob_start();
 session_start();
-include("admin/assets/connect.php");
-include("admin/assets/functions.php");
+include("../admin/assets/connect.php");
+include("../admin/assets/functions.php");
 ?>
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="ger">
 <head>
 	<!-- Start Meta -->
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_tr", 0); ?> | Hakkımızda</title>
-    <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
-    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
+    <title><?php echo select("seo_setup", "title_ger", 0); ?> | Über Uns</title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_ger", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_ger", 0); ?>">
     <meta name="subject" content="Hair Transplant & Plastic Surgery">
     <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
 
     <meta name="robots" content="index,follow">
-	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
-	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_ger", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_ger", 0); ?>">
 	<meta property="og:url" content="http://www.haircentrum.com">
 	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
@@ -51,7 +51,7 @@ include("admin/assets/functions.php");
 	</div>
 	<!-- Preloader end -->
 	<!-- Header Area Start -->
-	<?php include("assets/header.php"); ?>    
+	<?php include("../assets/header_ger.php"); ?>    
 	<!-- Header Area End -->		
 	<!-- Page Banner Area Start -->
     <div class="page__banner" data-background="<?php echo $base_link.select("about_bg", "pic_url", 0); ?>">
@@ -59,11 +59,11 @@ include("admin/assets/functions.php");
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__banner-title">
-                        <h1>Hakkımızda</h1>
+                        <h1>Über Uns</h1>
                         <div class="page__banner-title-menu">
                             <ul>
-                                <li><a href="<?php echo $base_link; ?>index.php">Anasayfa</a></li>
-                                <li><span> | </span>Hakkımızda</li>
+                                <li><a href="<?php echo $base_link; ?>ger/index.php">Home</a></li>
+                                <li><span> | </span>Über Uns</li>
                             </ul>
                         </div>
                     </div>
@@ -78,9 +78,9 @@ include("admin/assets/functions.php");
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="mission__area-title">
-						<span class="subtitle"><?php echo select("about", "up_title_tr", 0); ?></span>
-						<h2><?php echo select("about", "main_title_tr", 0); ?></h2>	
-                        <p><?php echo select("about", "text_tr", 0); ?></p>                        
+						<span class="subtitle"><?php echo select("about", "up_title_ger", 0); ?></span>
+						<h2><?php echo select("about", "main_title_ger", 0); ?></h2>	
+                        <p><?php echo select("about", "text_ger", 0); ?></p>                        
                     </div>
                 </div>
             </div>
@@ -93,8 +93,8 @@ include("admin/assets/functions.php");
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="appointment__area-title">
-						<h2><?php echo select("casetup", "title_tr", 0); ?></h2>
-						<a href="<?php echo $base_link; ?>contact.php" class="theme-btn"><?php echo select("casetup", "link_text_tr", 0); ?></a>
+						<h2><?php echo select("casetup", "title_ger", 0); ?></h2>
+						<a href="<?php echo $base_link; ?>contact.php" class="theme-btn"><?php echo select("casetup", "link_text_ger", 0); ?></a>
 					</div>
 				</div>
 			</div>
@@ -108,8 +108,8 @@ include("admin/assets/functions.php");
 			<div class="row mb-60">
 				<div class="col-xl-12">
 					<div class="working__process-title t-center">
-						<span class="subtitle"><?php echo select("otherserv", "up_title_tr", 0); ?></span>
-						<h2><?php echo select("otherserv", "main_title_tr", 0); ?></h2>
+						<span class="subtitle"><?php echo select("otherserv", "up_title_ger", 0); ?></span>
+						<h2><?php echo select("otherserv", "main_title_ger", 0); ?></h2>
 					</div>					
 				</div>
 			</div>
@@ -121,8 +121,8 @@ include("admin/assets/functions.php");
 							<span>01</span>
 						</div>
 						<div class="working__process-item-content">
-							<h5><?php echo select("otherserv", "box1_title_tr", 0); ?></h5>
-							<p><?php echo select("otherserv", "box1_text_tr", 0); ?></p>
+							<h5><?php echo select("otherserv", "box1_title_ger", 0); ?></h5>
+							<p><?php echo select("otherserv", "box1_text_ger", 0); ?></p>
 						</div>
 					</div>
 				</div>
@@ -133,8 +133,8 @@ include("admin/assets/functions.php");
 							<span>02</span>
 						</div>
 						<div class="working__process-item-content">
-							<h5><?php echo select("otherserv", "box2_title_tr", 0); ?></h5>
-							<p><?php echo select("otherserv", "box2_text_tr", 0); ?></p>
+							<h5><?php echo select("otherserv", "box2_title_ger", 0); ?></h5>
+							<p><?php echo select("otherserv", "box2_text_ger", 0); ?></p>
 						</div>
 					</div>
 				</div>
@@ -145,8 +145,8 @@ include("admin/assets/functions.php");
 							<span>03</span>
 						</div>
 						<div class="working__process-item-content">
-							<h5><?php echo select("otherserv", "box3_title_tr", 0); ?></h5>
-							<p><?php echo select("otherserv", "box3_text_tr", 0); ?></p>
+							<h5><?php echo select("otherserv", "box3_title_ger", 0); ?></h5>
+							<p><?php echo select("otherserv", "box3_text_ger", 0); ?></p>
 						</div>
 					</div>
 				</div>
@@ -156,7 +156,7 @@ include("admin/assets/functions.php");
 	<!-- Working Process End -->	
 	
 	<!-- Footer Area Start -->	
-	<?php include("assets/footer.php"); ?>
+	<?php include("../assets/footer_ger.php"); ?>
 	<!-- Footer Area End -->	
 
 	<!-- Scroll Btn Start -->

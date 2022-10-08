@@ -1,26 +1,26 @@
 <?php 
 ob_start();
 session_start();
-include("admin/assets/connect.php");
-include("admin/assets/functions.php");
+include("../admin/assets/connect.php");
+include("../admin/assets/functions.php");
 ?>
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="ger">
 
 <head>
 	<!-- Start Meta -->
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_tr", 0); ?></title>
-    <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
-    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
+    <title><?php echo select("seo_setup", "title_ger", 0); ?></title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_ger", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_ger", 0); ?>">
     <meta name="subject" content="Hair Transplant & Beauty Center">
     <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
 
     <meta name="robots" content="index,follow">
-	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
-	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_ger", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_ger", 0); ?>">
 	<meta property="og:url" content="http://www.haircentrum.com">
 	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
@@ -53,7 +53,7 @@ include("admin/assets/functions.php");
 	<!-- Preloader end -->
 
 	<!-- Header Area Start -->
-	<?php include("assets/header.php"); ?>    
+	<?php include("../assets/header_ger.php"); ?>    
 	<!-- Header Area End -->
 
 	<!-- Banner Area Start -->
@@ -62,8 +62,8 @@ include("admin/assets/functions.php");
 			<div class="row align-items-center">
 				<div class="col-md-7 col-xl-8 order-change">
 					<div class="banner__area-left">
-						<h1><?php echo select("banner_settings", "title_tr", 0); ?></h1>
-						<a href="<?php echo $base_link; ?>about.php" class="theme-btn">Hakkımızda</a>
+						<h1><?php echo select("banner_settings", "title_ger", 0); ?></h1>
+						<a href="<?php echo $base_link; ?>ger/about.php" class="theme-btn">Über Uns</a>
 					</div>
 				</div>
 			</div>			
@@ -108,8 +108,8 @@ include("admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
-							<p><?php echo $box["text_tr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_ger"]).'/'.$box["box_link"];?>"><?php echo $box["title_ger"];  ?></a></h4>
+							<p><?php echo $box["text_ger"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -131,8 +131,8 @@ include("admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
-							<p><?php echo $box["text_tr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_ger"]).'/'.$box["box_link"];?>"><?php echo $box["title_ger"];  ?></a></h4>
+							<p><?php echo $box["text_ger"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -154,8 +154,8 @@ include("admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
-							<p><?php echo $box["text_tr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_ger"]).'/'.$box["box_link"];?>"><?php echo $box["title_ger"];  ?></a></h4>
+							<p><?php echo $box["text_ger"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -177,8 +177,8 @@ include("admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_tr"]).'/'.$box["box_link"];?>"><?php echo $box["title_tr"];  ?></a></h4>
-							<p><?php echo $box["text_tr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_ger"]).'/'.$box["box_link"];?>"><?php echo $box["title_ger"];  ?></a></h4>
+							<p><?php echo $box["text_ger"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -200,10 +200,10 @@ include("admin/assets/functions.php");
 				</div>
 				<div class="col-xl-6 col-lg-6">
 					<div class="about__area-title">
-						<span class="subtitle"><?php echo select("video_setup", "up_title_tr", 0); ?></span>
-						<h2><?php echo select("video_setup", "title_tr", 0); ?></h2>						
-						<p><?php echo select("video_setup", "text_tr", 0); ?></p>
-						<a class="theme-btn" href="<?php echo $base_link.select("video_setup", "button_link", 0); ?>">Devam</a>
+						<span class="subtitle"><?php echo select("video_setup", "up_title_ger", 0); ?></span>
+						<h2><?php echo select("video_setup", "title_ger", 0); ?></h2>						
+						<p><?php echo select("video_setup", "text_ger", 0); ?></p>
+						<a class="theme-btn" href="<?php echo $base_link.select("video_setup", "button_link", 0); ?>">Fortsetzen</a>
 					</div>
 				</div>
 			</div>
@@ -212,7 +212,7 @@ include("admin/assets/functions.php");
 	<!-- About Area End -->
 	
 	<!-- Footer Area Start -->	
-	<?php include("assets/footer.php"); ?>	
+	<?php include("../assets/footer_ger.php"); ?>	
 	<!-- Footer Area End -->
 	<!-- Scroll Btn Start -->
 	<div class="scroll-up">

@@ -1,26 +1,26 @@
 <?php 
 ob_start();
 session_start();
-include("admin/assets/connect.php");
-include("admin/assets/functions.php");
+include("../admin/assets/connect.php");
+include("../admin/assets/functions.php");
 ?>
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="fr">
 
 <head>
 	<!-- Start Meta -->
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_tr", 0); ?> | Galeri</title>
-    <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
-    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
+    <title><?php echo select("seo_setup", "title_fr", 0); ?> | Galerie</title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_fr", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_fr", 0); ?>">
     <meta name="subject" content="Hair Transplant & Beauty Center">
     <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
 
     <meta name="robots" content="index,follow">
-	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
-	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_fr", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_fr", 0); ?>">
 	<meta property="og:url" content="http://www.haircentrum.com">
 	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
@@ -54,7 +54,7 @@ include("admin/assets/functions.php");
 	</div>
 	<!-- Preloader end -->
 	<!-- Header Area Start -->
-	<?php include("assets/header.php"); ?>   
+	<?php include("../assets/header_fr.php"); ?>   
 	<!-- Header Area End -->		
 	<!-- Page Banner Area Start -->
     <div class="page__banner" data-background="<?php echo $base_link.select("gallery_bg", "pic_url", 0); ?>">
@@ -62,11 +62,11 @@ include("admin/assets/functions.php");
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__banner-title">
-                        <h1>Resim Galeri</h1>
+                        <h1>Galerie</h1>
                         <div class="page__banner-title-menu">
                             <ul>
-                                <li><a href="<?php echo $base_link; ?>index.php">Anasayfa</a></li>
-                                <li><span> | </span>Resim Galeri</li>
+                                <li><a href="<?php echo $base_link; ?>fr/index.php">ACCUEIL</a></li>
+                                <li><span> | </span>Galerie</li>
                             </ul>
                         </div>
                     </div>
@@ -102,7 +102,7 @@ include("admin/assets/functions.php");
 	<!-- Gallery Area End -->
 
 	<!-- Footer Area Start -->	
-	<?php include("assets/footer.php"); ?>
+	<?php include("../assets/footer_fr.php"); ?>
 	<!-- Footer Area End -->	
 	
 	<!-- Scroll Btn Start -->

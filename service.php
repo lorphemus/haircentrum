@@ -22,8 +22,8 @@ include("admin/assets/functions.php");
     <meta name="robots" content="index,follow">
 	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
 	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
-	<meta property="og:url" content="https://www.haircentrum.com">
-	<meta property="og:image" content="https://www.haircentrum.com/img/property.jpg"/>
+	<meta property="og:url" content="http://www.haircentrum.com">
+	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="<?php echo $base_link; ?>assets/img/favicon.png">

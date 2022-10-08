@@ -1,26 +1,26 @@
 <?php 
 ob_start();
 session_start();
-include("admin/assets/connect.php");
-include("admin/assets/functions.php");
+include("../admin/assets/connect.php");
+include("../admin/assets/functions.php");
 ?>
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="fr">
 
 <head>
 	<!-- Start Meta -->
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_tr", 0); ?> | İletişim</title>
-    <meta name="description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
-    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_tr", 0); ?>">
+    <title><?php echo select("seo_setup", "title_fr", 0); ?> | Contact</title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_fr", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_fr", 0); ?>">
     <meta name="subject" content="Hair Transplant & Plastic Surgery">
     <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
 
     <meta name="robots" content="index,follow">
-	<meta property="og:title" content="<?php echo select("seo_setup", "title_tr", 0); ?>">
-	<meta property="og:description" content="<?php echo select("seo_setup", "desc_tr", 0); ?>">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_fr", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_fr", 0); ?>">
 	<meta property="og:url" content="http://www.haircentrum.com">
 	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
@@ -54,7 +54,7 @@ include("admin/assets/functions.php");
 	</div>
 	<!-- Preloader end -->
 	<!-- Header Area Start -->
-	<?php include("assets/header.php"); ?>    
+	<?php include("../assets/header_fr.php"); ?>    
 	<!-- Header Area End -->		
 	<!-- Page Banner Area Start -->
     <div class="page__banner" data-background="<?php echo $base_link.select("contact_bg", "pic_url", 0); ?>">
@@ -62,11 +62,11 @@ include("admin/assets/functions.php");
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__banner-title">
-                        <h1>İletişim</h1>
+                        <h1>Contact</h1>
                         <div class="page__banner-title-menu">
                             <ul>
-                                <li><a href="<?php echo $base_link; ?>index.php">Anasayfa</a></li>
-                                <li><span> | </span>İletişim</li>
+                                <li><a href="<?php echo $base_link; ?>fr/index.php">ACCUEIL</a></li>
+                                <li><span> | </span>Contact</li>
                             </ul>
                         </div>
                     </div>
@@ -81,8 +81,8 @@ include("admin/assets/functions.php");
             <div class="row mb-60">
                 <div class="col-xl-12">
                     <div class="contact__page-title t-center">
-						<span class="subtitle"><?php echo select("form", "up_title_tr", 0); ?></span>
-						<h2><?php echo select("form", "main_title_tr", 0); ?></h2>	
+						<span class="subtitle"><?php echo select("form", "up_title_fr", 0); ?></span>
+						<h2><?php echo select("form", "main_title_fr", 0); ?></h2>	
                     </div>                    
                 </div>
             </div>
@@ -93,7 +93,7 @@ include("admin/assets/functions.php");
                             <i class="fal fa-phone-alt"></i>		                      
                         </div>
                         <div class="contact__page-item-content">
-                            <h5>Telefon</h5>
+                            <h5>Téléphoner</h5>
                             <p><a href="tel:<?php echo select("contact_settings", "phone", 0); ?>"><?php echo select("contact_settings", "phone", 0); ?></a></p>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ include("admin/assets/functions.php");
                             <i class="fal fa-envelope-open-text"></i>		                      
                         </div>
                         <div class="contact__page-item-content">
-                            <h5>Email</h5>
+                            <h5>E-mail</h5>
                             <p><a href="mailto:<?php echo select("contact_settings", "mail", 0); ?>"><?php echo select("contact_settings", "mail", 0); ?></a></p>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ include("admin/assets/functions.php");
                             <i class="fal fa-map-marked-alt"></i>		                      
                         </div>
                         <div class="contact__page-item-content">
-                            <h5>Adres</h5>
+                            <h5>Adresse</h5>
                             <p><?php echo select("contact_settings", "address", 0); ?></p>
                         </div>
                     </div>
@@ -124,38 +124,38 @@ include("admin/assets/functions.php");
             <div class="row">
                 <div class="col-xl-12">
                     <div class="contact__page-form">
-                        <h2>Bize Hemen Ulaşın</h2>
+                        <h2>Reste en contact</h2>
                         <form action="<?php echo $base_link; ?>send.php" method="post">	
                             <div class="row">
                                 <div class="col-md-6 mb-30"> 
                                     <div class="contact__page-form-item">
-                                        <input type="text" name="name" placeholder="Adınız / Soyadınız" required="required">
+                                        <input type="text" name="name" placeholder="Nom" required="required">
                                     </div>										
                                 </div>
                                 <div class="col-md-6 md-mb-30">
                                     <div class="contact__page-form-item">
-                                        <input type="email" name="email" placeholder="Email Adresiniz" required="required">											
+                                        <input type="email" name="email" placeholder="Adresse e-mail" required="required">											
                                     </div>									
                                 </div>
                                 <div class="col-md-6 mb-30"> 
                                     <div class="contact__page-form-item">
-                                        <input type="text" name="phone" placeholder="Telefon Numaranız" required="required">
+                                        <input type="text" name="phone" placeholder="Numéro de téléphone" required="required">
                                     </div>										
                                 </div>
                                 <div class="col-md-6 md-mb-30"> 
                                     <div class="contact__page-form-item">
-                                        <input type="text" name="service" placeholder="Almak İstediğiniz Hizmet" required="required">
+                                        <input type="text" name="service" placeholder="La prestation que vous souhaitez" required="required">
                                     </div>										
                                 </div>
                                 <div class="col-lg-12 mb-30"> 
                                     <div class="contact__page-form-item">
-                                        <textarea name="message" placeholder="Mesajınız..."></textarea>
+                                        <textarea name="message" placeholder="Message..."></textarea>
                                     </div>										
                                 </div>
                                 <div class="col-lg-12">										
                                     <div class="contact__page-form-item">
-                                        <input type="hidden" name="page" value="contact.php">
-                                        <button class="theme-btn" type="submit" name="send_mail">Gönder</button>
+                                        <input type="hidden" name="page" value="fr/contact.php">
+                                        <button class="theme-btn" type="submit" name="send_mail">Envoyer</button>
                                     </div>										
                                 </div>
                             </div>							
@@ -187,7 +187,7 @@ include("admin/assets/functions.php");
 	<!-- Contact Area End -->	
 
 	<!-- Footer Area Start -->	
-	<?php include("assets/footer.php"); ?>
+	<?php include("../assets/footer_fr.php"); ?>
 	<!-- Footer Area End -->	
 	
 	<!-- Scroll Btn Start -->

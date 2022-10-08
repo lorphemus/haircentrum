@@ -340,7 +340,7 @@ $page = "otherserv";
 										</div>
 										<!-- /.tab-pane -->
 										<div class="tab-pane" id="tab_28">
-											<textarea class="form-control" row="5" name="box1_text_ger" required><?php echo $get_data["box1_text_ger"]; ?></textarea>
+											<textarea class="form-control" row="5" name="box2_text_ger" required><?php echo $get_data["box2_text_ger"]; ?></textarea>
 										</div>
 										<!-- /.tab-pane -->
 										<div class="tab-pane" id="tab_29">
