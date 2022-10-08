@@ -37,7 +37,7 @@
                         <div class="header__area-menubar-right-box-search-box">
                             <ul>
                                <li><a href="<?php echo $base_link; ?>index.php"><img src="<?php echo $base_link; ?>assets/img/lang/tr.png"/> Türkçe</a></li>
-                               <li><a href="<?php echo $base_link; ?>ger/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/gb.png"/> English</a></li>
+                               <li><a href="<?php echo $base_link; ?>en/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/gb.png"/> English</a></li>
                                <li><a href="<?php echo $base_link; ?>ger/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/de.png"/> Deutsch</a></li>
                                <li><a href="<?php echo $base_link; ?>fr/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/fr.png"/> Français</a></li>
                                <li><a href="<?php echo $base_link; ?>ar/index.php"><img src="<?php echo $base_link; ?>assets/img/lang/ar.png"/> عربي</a></li>

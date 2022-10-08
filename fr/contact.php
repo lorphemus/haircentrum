@@ -125,7 +125,7 @@ include("../admin/assets/functions.php");
                 <div class="col-xl-12">
                     <div class="contact__page-form">
                         <h2>Reste en contact</h2>
-                        <form action="<?php echo $base_link; ?>send.php" method="post">	
+                        <form action="<?php echo $base_link; ?>fr/send.php" method="post">	
                             <div class="row">
                                 <div class="col-md-6 mb-30"> 
                                     <div class="contact__page-form-item">
@@ -154,7 +154,7 @@ include("../admin/assets/functions.php");
                                 </div>
                                 <div class="col-lg-12">										
                                     <div class="contact__page-form-item">
-                                        <input type="hidden" name="page" value="fr/contact.php">
+                                        <input type="hidden" name="page" value="contact.php">
                                         <button class="theme-btn" type="submit" name="send_mail">Envoyer</button>
                                     </div>										
                                 </div>
