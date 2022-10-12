@@ -18,7 +18,7 @@ function seo($s) {
 function select($table_name, $setting, $id){
 	include("connect.php");
 	$query=$db->prepare("SELECT * FROM $table_name WHERE id=$id");
-	$query->execute(array(0));
+	$query->execute();
 	$get_set=$query->fetch(PDO::FETCH_ASSOC);
 	return $get_set["$setting"];
 }
