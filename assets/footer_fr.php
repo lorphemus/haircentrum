@@ -96,7 +96,7 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="copyright__area-right t-right lg-t-center">
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="<?php echo $base_link; ?>privacy-policy.php">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,12 +1,11 @@
 <?php 
 ob_start();
 session_start();
-include("../admin/assets/connect.php");
-include("../admin/assets/functions.php");
+include("admin/assets/connect.php");
+include("admin/assets/functions.php");
 ?>
 <!DOCTYPE html>
-<html lang="ger">
-
+<html lang="en">
 <head>
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -26,37 +25,19 @@ include("../admin/assets/functions.php");
 	gtag('config', 'G-WWSBQLJ77E');
 	</script>
 
-	<!-- Meta Pixel Code -->
-	<script>
-	!function(f,b,e,v,n,t,s)
-	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-	n.queue=[];t=b.createElement(e);t.async=!0;
-	t.src=v;s=b.getElementsByTagName(e)[0];
-	s.parentNode.insertBefore(t,s)}(window, document,'script',
-	'https://connect.facebook.net/en_US/fbevents.js');
-	fbq('init', '800698274382211');
-	fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=800698274382211&ev=PageView&noscript=1"
-	/></noscript>
-	<!-- End Meta Pixel Code -->
-
 	<!-- Start Meta -->
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_ger", 0); ?> | Galerie</title>
-    <meta name="description" content="<?php echo select("seo_setup", "desc_ger", 0); ?>">
-    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_ger", 0); ?>">
-    <meta name="subject" content="Hair Transplant & Beauty Center">
+    <title><?php echo select("seo_setup", "title_en", 0); ?> | Privacy Policy</title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_en", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_en", 0); ?>">
+    <meta name="subject" content="Hair Transplant & Plastic Surgery">
     <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
 
     <meta name="robots" content="index,follow">
-	<meta property="og:title" content="<?php echo select("seo_setup", "title_ger", 0); ?>">
-	<meta property="og:description" content="<?php echo select("seo_setup", "desc_ger", 0); ?>">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_en", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_en", 0); ?>">
 	<meta property="og:url" content="http://www.haircentrum.com">
 	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
@@ -74,8 +55,6 @@ include("../admin/assets/functions.php");
 	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/magnific-popup.css">
 	<!-- Mean Menu CSS -->
 	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/meanmenu.min.css">
-	<!-- Fancybox CSS -->
-	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/css/fancybox.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="<?php echo $base_link; ?>assets/sass/style.css"> 
 </head>
@@ -95,19 +74,19 @@ include("../admin/assets/functions.php");
 	</div>
 	<!-- Preloader end -->
 	<!-- Header Area Start -->
-	<?php include("../assets/header_ger.php"); ?>   
+	<?php include("assets/header_en.php"); ?>    
 	<!-- Header Area End -->		
 	<!-- Page Banner Area Start -->
-    <div class="page__banner" data-background="<?php echo $base_link.select("gallery_bg", "pic_url", 0); ?>">
+    <div class="page__banner" data-background="<?php echo $base_link.select("about_bg", "pic_url", 0); ?>">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__banner-title">
-                        <h1>Galerie</h1>
+                        <h1>Privacy Policy</h1>
                         <div class="page__banner-title-menu">
                             <ul>
-                                <li><a href="<?php echo $base_link; ?>ger/index.php">Home</a></li>
-                                <li><span> | </span>Galerie</li>
+                                <li><a href="<?php echo $base_link; ?>en/index.php">Home</a></li>
+                                <li><span> | </span>Privacy Policy</li>
                             </ul>
                         </div>
                     </div>
@@ -115,37 +94,37 @@ include("../admin/assets/functions.php");
             </div>
         </div>
     </div>
-	<!-- Page Banner Area End -->
-	<!-- Gallery Area Start -->
-    <div class="gallery__area section-padding">
+	<!-- Page Banner Area End -->	
+	<!-- Mission Area Start -->	
+    <div class="mission__area section-padding">
         <div class="container">
             <div class="row">
-				<?php 
-				$query=$db->prepare("SELECT * FROM gallery ORDER BY id ASC");
-				$query->execute();
-				$pics=$query->fetchAll();
-				foreach($pics as $pic){
-				?>
-				<div class="col-xl-4 col-lg-4 col-md-6 mb-30" style="float: left;">
-                    <div class="gallery__area-item">
-                        <div class="gallery__area-item-image">
-                            <img src="<?php echo $pic["pic_url"]; ?>" alt="">
-                            <div class="gallery__area-item-image-icon">
-                                <a data-fancybox="gallery" href="<?php echo $pic["pic_url"]; ?>"><i class="fal fa-search-plus"></i></a>
-                            </div>
-                        </div>
+                <div class="col-xl-12 col-lg-12">
+                    <div class="mission__area-title">
+						<span class="subtitle"><?php echo select("about", "up_title_en", 0); ?></span>
+						<h2>Privacy Policy</h2>	
+                        <p>We appreciate your concern and concern about the privacy of your data on the Internet. This policy has been prepared to help you understand the nature of the data we collect from you when you visit our website and how we handle this personal data.</p>
+						<p>Browsing: We did not design this site to collect personal data from your computer while you are browsing this site, but will only use data provided by you with your knowledge and of your own free will to contact you.</p>
+						<p>Internet Protocol (IP) address: At any time you visit any Web site including this Site, the Host Server will record your IP address, date and time of visit, type of Internet browser you are using and the URL of any Web site The Internet that refers you to this Web site.</p>
+						<p>Online Surveys: Our online surveys enable us to collect specific data such as the data required of you regarding your view and feel about our site. Your feedback is of paramount importance and is appreciated as it enables us to improve our site. Provide data related to your name and other data.</p>
+						<p>Confidentiality of Information: We will at all times maintain the privacy and confidentiality of all personal data we receive, and will not disclose this information at all, the information will remain very confidential, including contact data, names, photos and others.</p>
+						<p>Data required to perform transactions required by you: When we need any data of your own, we will ask you to submit it of your own free will. This information will help us contact you and execute your requests. Where possible, the data provided by you to any third party will not be sold for marketing to its own benefit without your prior written consent unless it is a collective data used for statistical purposes and research. Without including any data that may be used to identify you.</p>
+						<p>When you contact us</p>
+						<p>All data provided by you will be treated as confidential. Forms submitted directly on the web require data that will help us improve our site. The data provided by you will be used to respond to all your queries, comments or requests by this Site or any of its affiliated sites.</p>
+						<p>Disclosure of information to any third party: We will not sell, trade, lease or disclose any information to any third parties outside this website or its affiliates. Information will only be disclosed if an order is issued by any judicial or regulatory authority.</p>
+						<p>Contact us: You can contact us if needed by clicking on the Contact Us link on our website or sending us an e-mail.</p>
+						<p>Finally, your concerns about privacy and confidentiality are very important to us. We hope that this will be achieved through this policy.</p>                        
                     </div>
                 </div>
-				<?php } ?>
             </div>
         </div>
     </div>
-	<!-- Gallery Area End -->
-
-	<!-- Footer Area Start -->	
-	<?php include("../assets/footer_ger.php"); ?>
-	<!-- Footer Area End -->	
+	<!-- Mission Area End -->	
 	
+	<!-- Footer Area Start -->	
+	<?php include("assets/footer_en.php"); ?>
+	<!-- Footer Area End -->	
+
 	<!-- Scroll Btn Start -->
 	<div class="scroll-up">
 		<svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> </svg>
@@ -167,8 +146,6 @@ include("../admin/assets/functions.php");
 	<script src="<?php echo $base_link; ?>assets/js/jquery.waypoints.min.js"></script>
 	<!-- Mean Menu JS -->
 	<script src="<?php echo $base_link; ?>assets/js/jquery.meanmenu.min.js"></script>
-	<!-- Fancybox JS -->
-	<script src="<?php echo $base_link; ?>assets/js/jquery.fancybox.min.js"></script>
 	<!-- Isotope JS -->
 	<script src="<?php echo $base_link; ?>assets/js/isotope.pkgd.min.js"></script>
 	<!-- Custom JS -->
