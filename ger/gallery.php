@@ -129,9 +129,9 @@ include("../admin/assets/functions.php");
 				<div class="col-xl-4 col-lg-4 col-md-6 mb-30" style="float: left;">
                     <div class="gallery__area-item">
                         <div class="gallery__area-item-image">
-                            <img src="<?php echo $pic["pic_url"]; ?>" alt="">
+                            <img src="<?php echo $base_link.$pic["pic_url"]; ?>" alt="">
                             <div class="gallery__area-item-image-icon">
-                                <a data-fancybox="gallery" href="<?php echo $pic["pic_url"]; ?>"><i class="fal fa-search-plus"></i></a>
+                                <a data-fancybox="gallery" href="<?php echo $base_link.$pic["pic_url"]; ?>"><i class="fal fa-search-plus"></i></a>
                             </div>
                         </div>
                     </div>
