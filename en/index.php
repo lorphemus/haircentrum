@@ -125,8 +125,8 @@ include("../admin/assets/functions.php");
 			<div class="row align-items-end mb-60">
 				<div class="col-xl-7 col-md-7 md-mb-30">
 					<div class="services__area-title md-t-center">
-						<span class="subtitle">Hizmetlerimiz</span>
-						<h2>Slogan Başlık</h2>
+						<span class="subtitle">WE ARE HERE FOR YOU</span>
+						<h2>OUR MAIN SERVICES</h2>
 					</div>
 				</div>
 			</div>
