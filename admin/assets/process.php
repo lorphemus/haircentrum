@@ -572,6 +572,28 @@ if(isset($_POST["video_text_update"])){
 	}
 }
 
+/* Video link Update */
+if(isset($_POST["video_link_update"])){
+	$text_edit=$db->prepare("UPDATE video_setup SET
+	video_link=:video_link WHERE id=0");
+	
+	$update=$text_edit->execute(array(
+	"video_link" => $_POST["video_link"]
+	));
+	
+	if($update){
+		$_SESSION['title'] = "İşlem Başarılı";
+		$_SESSION['status'] = "Video linki başarılı bir şekilde güncellenmiştir.";
+		$_SESSION['icon'] = "success";
+		header("Location:../video-setup.php");
+	}else{
+		$_SESSION['title'] = "Hata!";
+		$_SESSION['status'] = "Video linki güncellenirken bir hata oluştu. Daha sonra tekrar deneyin veya info@excess.web.tr adresine bildirin.";
+		$_SESSION['icon'] = "error";
+		header("Location:../video-setup.php");
+	}
+}
+
 /* About Page Cover */
 if(isset($_POST['about_page_picture_update'])){
 	
