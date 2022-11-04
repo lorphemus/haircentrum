@@ -5,7 +5,7 @@ include("../admin/assets/connect.php");
 include("../admin/assets/functions.php");
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar">
 
 <head>
 	<!-- Google Tag Manager -->
@@ -15,7 +15,7 @@ include("../admin/assets/functions.php");
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-MRZLHM4');</script>
 	<!-- End Google Tag Manager -->
-
+	
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WWSBQLJ77E"></script>
 	<script>
@@ -48,15 +48,15 @@ include("../admin/assets/functions.php");
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><?php echo select("seo_setup", "title_fr", 0); ?></title>
-    <meta name="description" content="<?php echo select("seo_setup", "desc_fr", 0); ?>">
-    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_fr", 0); ?>">
+    <title><?php echo select("seo_setup", "title_ar", 0); ?></title>
+    <meta name="description" content="<?php echo select("seo_setup", "desc_ar", 0); ?>">
+    <meta name="keywords" content="<?php echo select("seo_setup", "keyw_ar", 0); ?>">
     <meta name="subject" content="Hair Transplant & Beauty Center">
     <meta name="author" content="Batuhan Nihat KILIÇ | Excess Reklam">
 
     <meta name="robots" content="index,follow">
-	<meta property="og:title" content="<?php echo select("seo_setup", "title_fr", 0); ?>">
-	<meta property="og:description" content="<?php echo select("seo_setup", "desc_fr", 0); ?>">
+	<meta property="og:title" content="<?php echo select("seo_setup", "title_ar", 0); ?>">
+	<meta property="og:description" content="<?php echo select("seo_setup", "desc_ar", 0); ?>">
 	<meta property="og:url" content="http://www.haircentrum.com">
 	<meta property="og:image" content="http://www.haircentrum.com/assets/img/property.jpg"/>
 
@@ -83,7 +83,7 @@ include("../admin/assets/functions.php");
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRZLHM4"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-	
+
 	<!-- Preloader start -->
 	<div class="theme-loader">
 		<div class="spinner">
@@ -94,17 +94,17 @@ include("../admin/assets/functions.php");
 	<!-- Preloader end -->
 
 	<!-- Header Area Start -->
-	<?php include("../assets/header_fr.php"); ?>    
+	<?php include("../assets/header_ar.php"); ?>    
 	<!-- Header Area End -->
 
 	<!-- Banner Area Start -->
 	<div class="banner__area" data-background="<?php echo $base_link.select("banner_settings", "pic_url", 0); ?>">
-		<div class="container">
+		<div class="container" style="direction: rtl;">
 			<div class="row align-items-center">
 				<div class="col-md-7 col-xl-8 order-change">
 					<div class="banner__area-left">
-						<h1><?php echo select("banner_settings", "title_fr", 0); ?></h1>
-						<a href="<?php echo $base_link; ?>fr/about.php" class="theme-btn">À propos de nous</a>
+						<h1><?php echo select("banner_settings", "title_ar", 0); ?></h1>
+						<a href="<?php echo $base_link; ?>ar/about.php" class="theme-btn">من نحن</a>
 					</div>
 				</div>
 			</div>			
@@ -122,15 +122,15 @@ include("../admin/assets/functions.php");
 	<!-- Services Area Start -->
 	<div class="services__area">
 		<div class="container services__area-bg">
-			<div class="row align-items-end mb-60">
+			<div class="row align-items-end mb-60" style="direction: rtl;">
 				<div class="col-xl-7 col-md-7 md-mb-30">
 					<div class="services__area-title md-t-center">
-						<span class="subtitle">NOUS SOMMES LÀ POUR VOUS</span>
-						<h2>NOS PRINCIPALES PRESTATIONS</h2>
+						<span class="subtitle">نحن هنا من أجلك</span>
+						<h2>خدماتنا الرئيسية</h2>
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" style="direction: rtl;">
 				<?php
                 $query=$db->prepare("SELECT * FROM banner_down WHERE id=?");
                 $query->execute(array(1));
@@ -149,8 +149,8 @@ include("../admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_fr"]).'/'.$box["box_link"];?>"><?php echo $box["title_fr"];  ?></a></h4>
-							<p><?php echo $box["text_fr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_en"]).'/'.$box["box_link"];?>"><?php echo $box["title_ar"];  ?></a></h4>
+							<p><?php echo $box["text_ar"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -172,8 +172,8 @@ include("../admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_fr"]).'/'.$box["box_link"];?>"><?php echo $box["title_fr"];  ?></a></h4>
-							<p><?php echo $box["text_fr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_en"]).'/'.$box["box_link"];?>"><?php echo $box["title_ar"];  ?></a></h4>
+							<p><?php echo $box["text_ar"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -195,8 +195,8 @@ include("../admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_fr"]).'/'.$box["box_link"];?>"><?php echo $box["title_fr"];  ?></a></h4>
-							<p><?php echo $box["text_fr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_en"]).'/'.$box["box_link"];?>"><?php echo $box["title_ar"];  ?></a></h4>
+							<p><?php echo $box["text_ar"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -218,8 +218,8 @@ include("../admin/assets/functions.php");
 							</div>
 						</div>
 						<div class="services__area-item-content">
-							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_fr"]).'/'.$box["box_link"];?>"><?php echo $box["title_fr"];  ?></a></h4>
-							<p><?php echo $box["text_fr"];  ?></p>
+							<h4><a href="<?php echo $base_link; ?>services/<?=seo($service_link["service_title_en"]).'/'.$box["box_link"];?>"><?php echo $box["title_ar"];  ?></a></h4>
+							<p><?php echo $box["text_ar"];  ?></p>
 						</div>
 					</div>
 				</div>
@@ -228,7 +228,7 @@ include("../admin/assets/functions.php");
 	</div>
 	<!-- Services Area End -->
 	<!-- About Area Start -->
-	<div class="about__area section-padding">
+	<div class="about__area section-padding" style="direction: rtl;">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-6 lg-mb-30">
@@ -241,10 +241,10 @@ include("../admin/assets/functions.php");
 				</div>
 				<div class="col-xl-6 col-lg-6">
 					<div class="about__area-title">
-						<span class="subtitle"><?php echo select("video_setup", "up_title_fr", 0); ?></span>
-						<h2><?php echo select("video_setup", "title_fr", 0); ?></h2>						
-						<p><?php echo select("video_setup", "text_fr", 0); ?></p>
-						<a class="theme-btn" href="<?php echo $base_link.select("video_setup", "button_link", 0); ?>">Continuer</a>
+						<span class="subtitle"><?php echo select("video_setup", "up_title_ar", 0); ?></span>
+						<h2><?php echo select("video_setup", "title_ar", 0); ?></h2>						
+						<p><?php echo select("video_setup", "text_ar", 0); ?></p>
+						<a class="theme-btn" href="<?php echo $base_link.select("video_setup", "button_link", 0); ?>">استمر</a>
 					</div>
 				</div>
 			</div>
@@ -253,7 +253,7 @@ include("../admin/assets/functions.php");
 	<!-- About Area End -->
 	
 	<!-- Footer Area Start -->	
-	<?php include("../assets/footer_fr.php"); ?>	
+	<?php include("../assets/footer_ar.php"); ?>	
 	<!-- Footer Area End -->
 	<!-- Scroll Btn Start -->
 	<div class="scroll-up">
