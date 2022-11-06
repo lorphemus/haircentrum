@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="all__sidebar-item-help mt-30" data-background="<?php echo $base_link.select("aside_settings", "pic_url", 0); ?>">
-            <h3><?php echo select("aside_settings", "up_title_ar", 0); ?></h3>
+            <h3 style="text-align: right;"><?php echo select("aside_settings", "up_title_ar", 0); ?></h3>
             <div class="all__sidebar-item-help-contact">
                 <div class="all__sidebar-item-help-contact-icon">
                     <i class="fal fa-phone-alt"></i>

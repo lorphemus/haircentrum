@@ -62,8 +62,8 @@ $mailContent = '
 	$mail->MsgHTML($mailContent);
 	
 	if($mail->send()){
-		$_SESSION['title'] = "تم ارسال رسالتك";
-		$_SESSION['status'] = "سيتصل بك أعضاء فريقنا في أقرب وقت ممكن.";
+		$_SESSION['title'] = "تم إرسال الرسالة!";
+		$_SESSION['status'] = "سوف نتصل بك في أقرب وقت ممكن.  شكرًا";
 		$_SESSION['icon'] = "success";
 		header("Location:$page");
 	}else{

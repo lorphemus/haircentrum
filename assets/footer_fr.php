@@ -22,7 +22,7 @@
 
 <!-- Whatsapp Button -->
 <div class="floating_btn">
-    <a target="_blank" href="https://wa.me/<?php echo select("contact_settings", "whatsapp", 0); ?>?text=Je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20services">
+    <a target="_blank" href="https://wa.me/<?php echo select("contact_settings", "whatsapp", 0); ?>?text=Bonjour,%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20vos%20services">
     <div class="contact_icon">
         <i class="fab fa-whatsapp"></i>
     </div>

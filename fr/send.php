@@ -62,13 +62,13 @@ $mailContent = '
 	$mail->MsgHTML($mailContent);
 	
 	if($mail->send()){
-		$_SESSION['title'] = "Email envoyé";
-		$_SESSION['status'] = "Les membres de notre équipe vous appelleront dans les plus brefs délais.";
+		$_SESSION['title'] = "Message envoyé!";
+		$_SESSION['status'] = "Nous vous appellerons dès que possible. Merci";
 		$_SESSION['icon'] = "success";
 		header("Location:$page");
 	}else{
 		$_SESSION['title'] = "Erreur!";
-		$_SESSION['status'] = "Un problème est survenu. Veuillez réessayer plus tard.";
+		$_SESSION['status'] = "Quelque chose s'est mal passé. Veuillez réessayer plus tard.";
 		$_SESSION['icon'] = "error";
 		header("Location:$page");
 }
